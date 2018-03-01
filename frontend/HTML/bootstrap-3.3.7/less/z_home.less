@@ -1,0 +1,223 @@
+.yellow{
+  background-color: yellow;
+}
+.red{
+  background-color: red;
+}
+
+
+.wrap_under_nav{
+  background-color: white;
+  border-bottom: 1px solid lightgrey;
+
+}
+#navbar_under{
+  .navbar-nav>li>a{
+    color: #242424;
+  }
+
+}
+
+.form-control {
+  border-width: 1px;
+  border-color: rgb(183, 183, 183);
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+
+}
+
+
+.btn-default{
+  border-width: 1px;
+  border-color: rgb(183, 183, 183);
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+}
+
+
+
+
+
+.wrap_week_menu{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #f7f7f7;
+  .week_menu{
+    display: flex;
+    justify-content: inherit;
+    flex-wrap: wrap;
+    li a{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+
+      ///* Устройства с очень маленьким экраном (смартфоны, меньше 768px) */
+      ///* Стили CSS (по умолчанию) - для ширины viewport <768px */
+      //
+      ///* Устроства с маленьким экраном (планшеты, 768px и выше) */
+      //@media (min-width: 768px) {
+      //  /* Стили для устройств с шириной viewport, находящейся в диапазоне 768px - 991px */
+      //  background-color: blue;
+      //}
+      //
+      ///* Устройства со средним экраном (ноутбуки и компьютеры, 992px и выше) */
+      //@media (min-width: 992px) {
+      //  /* Стили для устройств с шириной viewport, находящейся в диапазоне 992px - 1199px */
+      //  background-color: blueviolet;
+      //}
+
+      /* Устройства с большим экраном (компьютеры, 1200px и выше) */
+      //@media (min-width: 1200px) {
+      //  /* Стили для устройств с шириной viewport >1200px */
+      //  background-color: pink;
+      //}
+
+
+    }
+  }
+
+  .week_menu1{
+    flex-grow: 4;
+    padding: 0;
+
+  }
+  .week_menu2{
+    flex-grow: 1;
+    padding: 0;
+
+  }
+
+
+  li{
+    //padding: 15px;
+    min-width: 144px;
+    flex-grow: 1;
+    list-style: none;
+    text-align: center;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //border: solid 1px lightgray;
+
+    a{
+      text-decoration: none;
+    }
+    a:focus, a:hover {
+      text-decoration: none;
+      background-color: #eee;
+    }
+  }
+  li:focus, li:hover {
+    text-decoration: none;
+    background-color: #eee;
+  }
+  .week_name{
+    font-family: "MuseoSansCyrl-700";
+    font-size: 18px;
+    color: #242424;
+  }
+  .week_time{
+    font-family: "MuseoSansCyrl-300";
+    font-size: 15px;
+    color: #717171;
+  }
+
+
+
+  .disabled{
+    background-color: #dedede;
+    cursor: not-allowed;
+    a {
+      color: #b4b4b4;
+      cursor: not-allowed;
+    }
+    a > .week_name , a> .week_time {
+      color: #b4b4b4;
+
+    }
+
+
+
+  }
+  .active
+  {
+    background-color: #729545;
+    a{
+      color: white;
+    }
+    a > .week_name , a> .week_time {
+      color: white;
+
+    }
+    a:hover,a:active,li.active:hover,li.active:active{
+      background-color: #729545;
+    }
+
+
+  }
+  a:hover,a:active,li.active:hover,li.active:active{
+    background-color: #729545;
+  }
+
+
+  .next_week{
+    width: 100px;
+    background-color: #f78d46;
+
+    a{
+      .week_name, .week_time{
+        color: white;
+      }
+
+    }
+  }
+  .next_week:hover , .next_week>a:hover {
+    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    color: white;
+    background-color: #f56f15;
+    border-color: #dd5e0a;
+  }
+
+  .pdf_week{
+    //width: 100px;
+    padding: 15px 1px;
+    background-color: #efefef;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

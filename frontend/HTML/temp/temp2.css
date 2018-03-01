@@ -1,0 +1,39 @@
+.right_cart .wrp_info_select_day {
+  padding: 15px;
+}
+.right_cart .info-min-price {
+  color: #f78d46;
+}
+.right_cart .form_area hr {
+  border-bottom: lightgray 1px dashed ;
+}
+.right_cart .curier_text {
+  background-color: #f8f8f8;
+  border-bottom: 1px dashed lightgray;
+  border-top: 1px dashed lightgray;
+  margin: 0;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.right_cart .pt2 {
+  padding-top: 2em;
+}
+.right_cart .flexradio .form-group {
+  display: flex;
+}
+.right_cart .flexradio .form-check-input {
+  margin: 7px;
+}
+.right_cart .rememberme {
+  padding-top: 20px;
+}
+.right_cart .rememberme .form-group {
+  align-items: center;
+  margin-bottom: 0;
+}
+.right_cart .submit {
+  width: 100%;
+}
+.yelowtext {
+  color: #f56f15;
+}
