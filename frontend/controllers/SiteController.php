@@ -91,21 +91,26 @@ class SiteController extends Controller
             'active_id_complex'=>$active_id_complex,
         ]);
     }
-
-
     public function actionUpdateextproduct()
     {
+
         if ($_GET['newvalue']<=0){$_GET['newvalue']=1;} // если количество нулевое
         Yii::$app->response->format = Response::FORMAT_JSON;
         $session = Yii::$app->session;
         $ext_prod = $session->get('prodext');
         $ext_prod[$_GET['prod_id']]=['count'=>$_GET['newvalue']];
         $session->set('prodext',$ext_prod);
+        $session->set('distance',$_GET['distance']);
         $prod=  Productext::find()->where(['id'=>$_GET['parent_id']])->one();
+        $delivery_id=isset($_GET['delivery_id'])?$_GET['delivery_id']:'';
+        $session->set('orderShippingType',$delivery_id);
+
+
+
         if ($prod){
-            $items = ['prod_id'=>$_GET['prod_id'],'newvalue'=>$_GET['newvalue'],'parent_id'=>$_GET['parent_id'],'new_price'=>$prod->getPrice(),'count'=>$_GET['newvalue']];
+            $items = ['prod_id'=>$_GET['prod_id'],'newvalue'=>$_GET['newvalue'],'parent_id'=>$_GET['parent_id'],'new_price'=>$prod->getPrice(),'count'=>$_GET['newvalue'],'delivery'=>$delivery_id];
         }else{
-            $items = ['prod_id'=>$_GET['prod_id'],'newvalue'=>$_GET['newvalue'],'parent_id'=>0,'new_price'=>0,'count'=>$_GET['newvalue']];
+            $items = ['prod_id'=>$_GET['prod_id'],'newvalue'=>$_GET['newvalue'],'parent_id'=>0,'new_price'=>0,'count'=>$_GET['newvalue'],'delivery'=>$delivery_id];
         }
 
         return $items;

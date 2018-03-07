@@ -22,7 +22,8 @@ class TempAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        "frontend\assets\CartAsset"
+//        "frontend\assets\CartAsset",
+        "frontend\assets\MainpageAsset",
     ];
     public $publishOptions = [
         'forceCopy' => true,];

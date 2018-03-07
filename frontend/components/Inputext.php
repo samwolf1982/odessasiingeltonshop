@@ -22,8 +22,8 @@ class Inputext extends \yii\base\Widget
 
         return '<div class="col-sm-6">
                             <div class="form-group">
-                                <label class="control-label " for="street">'.$this->fieldModel->name.'</label>
-                                <input value="'.$this->defaultValue.'" type="text" class="form-control" id="street" name="FieldValue[value]['.$this->fieldModel->id.']" placeholder="'.$this->fieldModel->name.'">
+                                <label class="control-label " for="inputext_'.$this->fieldModel->id.'">'.$this->fieldModel->name.'</label>
+                                <input value="'.$this->defaultValue.'" type="text" class="form-control" id="inputext_'.$this->fieldModel->id.'" name="FieldValue[value]['.$this->fieldModel->id.']" placeholder="'.$this->fieldModel->name.'">
                             </div>
                         </div>';
 

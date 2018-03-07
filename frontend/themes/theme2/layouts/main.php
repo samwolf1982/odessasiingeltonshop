@@ -75,18 +75,12 @@ AppAsset::register($this);
             </div>
         </div>
 
-
-
-
-
-
-
         <div class="wrap_under_nav">
             <div id="navbar_under" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden"><a href="#" class="image_button"><img src="/images/user.png" alt="user"></a></li>
                     <li class="liked" title="19"><a href="#" class="image_button" ><img src="/images/like.png" alt="like"></a></li>
-                    <li class="liked" title="9"><a href="#" class="image_button"><img src="/images/restaurant (1).png" alt="restaurant"></a></li>
+                    <li class="liked count_prod_in_cart" title="<?=yii::$app->cart->getCount();?>"><a href="#" class="image_button"><img src="/images/restaurant (1).png" alt="restaurant"></a></li>
 
                     <li>
                         <span class="cart_order_name">Ваш заказ</span><br>

@@ -76,6 +76,10 @@ return [
             'priceFormat' => [2,'.', ''], //Форма цены
             'as set_discount' => ['class' => 'common\aspects\SetDiscount'],
             'as set_certificate_discount' => '\common\aspects\SetCertificateDiscount',
+            'on cart_cost' => function($event) {
+//                $event->cost = ($event->cost*50)/100;
+                $event->cost =   $event->cost;
+            }
 //            'pathMap' => [
 //                 '@app/views' => '@app/themes/theme2/cart',
 //                '@app/modules' => '@app/themes/theme2/cart', // <-- !!!
@@ -110,7 +114,7 @@ return [
         'order' => [
             'class' => 'dvizh\order\Module',
             'successUrl' => '/site/thanks', //Страница, куда попадает пользователь после успешного заказа
-            //'adminNotificationEmail' => 'test@yandex.ru', //Мыло для отправки заказов
+            'adminNotificationEmail' => 'test@yandex.ru', //Мыло для отправки заказов
             'as use_certificate' => '\common\aspects\UseCertificate',
             'as order_filling' => '\common\aspects\OrderFilling',
         ],

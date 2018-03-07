@@ -5,6 +5,7 @@ use app\components\ChangeCountExt;
 use app\components\ExtendproductWidget;
 use app\components\OrderFormExt;
 use frontend\assets\MainpageAsset;
+use frontend\assets\TempAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use dvizh\shop\models\Category;
@@ -24,8 +25,10 @@ use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Модули Dvizh999';
+$this->title = 'Быстрая доставка еды';
 MainpageAsset::register($this);
+
+//TempAsset2::register($this);
 ?>
 
 <div class="col-sm-12 main">
@@ -35,9 +38,11 @@ MainpageAsset::register($this);
         <li><a href="/">первые блюда</a></li>
         <li><a href="/index2.php">вторые блюда</a></li>
         <li><a href="#">гарниры</a></li>
-        <li><a href="#">выпечка</a></li>
         <li><a href="#">напитки и десерты</a></li>
     </ul>
+
+
+
 
     <!--week menu-->
     <div class="wrap_week_menu">
@@ -67,27 +72,32 @@ MainpageAsset::register($this);
     <div class="food_block">
         <?php Pjax::begin(); ?>
         <div class="food_area">
+            <div class="food_block_header text-center">
+                <div class="nice">Babooshka</div>
+                <h2>Комплексные обеды</h2>
+                <div class="bottom_food_block_header">
+                    <img src="/images/food.png" alt="Комплексные обеды">
+                </div>
+            </div>
             <div class="food_block">
             <?php
             foreach ($productsext as $item) { //yii::error($item); ?>
                 <div class="food yellow">
-                    <img src="<?=$item->getImage()->getUrl('278x247');?>" alt="food">
+                    <a href="<?=Url::to(['site/index', 'id' => $item->id])?>">  <img src="<?=$item->getImage()->getUrl('278x247');?>" alt="food"> </a>
                     <div class="caption">
 
                         <h4>   <?= Html::a($item->name, [Url::to(['site/index', 'id' => $item->id])], ['class' => '']) ?></h4>
                         <?=ChangeCountExt::widget(['model' => $item,'parent_id'=>0,'text'=>'количество:']);?>
                         <div class="short_desc text-center">
-                            <p>
-                                Борщ овощной с грибами, салат "Витаминный”, дополнительный набо
-                            </p>
-
+                                <p>
+                                    <?=$item->short_text?>
+                                </p>
                         </div>
 
                         <div class="price text-center">
                             <?=ShowPrice::widget(['model' => $item]);?> грн
                         </div>
                         <div class="order text-center">
-<!--                            <button type="button" class="btn btn-success">Заказать</button>-->
                             <?=BuyButton::widget(['model' => $item,'text'=>'Заказать']);?>
                         </div>
 
@@ -109,7 +119,7 @@ MainpageAsset::register($this);
 
 
         <div class="clearfix"></div>
-        <div class="food_area">
+        <div class="food_area ">
             <div class="food_block_header text-center">
                 <div class="nice">Babooshka</div>
                 <h2>Комплексные обеды</h2>
@@ -161,97 +171,15 @@ MainpageAsset::register($this);
         </div>
 
 
-        <!--order complex-->
-        <div class="food_area">
-
-            <div class="clearfix"></div>
-
-            <div class="food_block food_block_order ">
-
-                <div class="order_area">
-                    <div class="food food_clear yellow">
-                        <div class="caption">
-                            <h4><a href="#">Комплексный обед  Лайт 1 (081) </a></h4>
-                            <hr>
-
-                            <div class="input-group wrap_count_complex_order">
-                                <span class="count_food_text">количество: </span>
-                                <span class="input-group-addon  input-group-addon_f"></span>
-                                <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)">
-                                <span class="input-group-addon input-group-addon_l"></span>
-                            </div>
-                            <hr>
-
-                            <div class="price">
-                                130 грн
-                            </div>
-                            <div class=" order text-center">
-                                <button type="button" class="btn btn-success">Заказать</button>
-                            </div>
-
-                            <ul class="order_complex_list">
-                                <li><span class="prod_name">Борщ</span>  -  <span class="prod_price">25 грн </span>/<span class="prod_count">1</span>шт  </li>
-                                <li><span class="prod_name">Борщ</span>  -  <span class="prod_price">25 грн </span>/<span class="prod_count">1</span>шт  </li>
-                                <li><span class="prod_name">Борщ</span>  -  <span class="prod_price">25 грн </span>/<span class="prod_count">1</span>шт  </li>
-                                <li><span class="prod_name">Борщ</span>  -  <span class="prod_price">25 грн </span>/<span class="prod_count">1</span>шт  </li>
-                                <li><span class="prod_name">Борщ</span>  -  <span class="prod_price">25 грн </span>/<span class="prod_count">1</span>шт  </li>
-
-                            </ul>
-
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wrap_food">
-                    <?php
-                    foreach (range(1,8) as $item) { ?>
-                        <div class="food yellow">
-                            <img src="/images/food1.png" alt="food">
-                            <div class="caption">
-                                <h4><a href="#">Комплексный обед  Лайт 1 (081) </a></h4>
-
-
-                                <div class="input-group">
-                                    <span class="count_food_text">количество: </span>
-                                    <span class="input-group-addon  input-group-addon_f"></span>
-                                    <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)">
-                                    <span class="input-group-addon input-group-addon_l"></span>
-                                </div>
-
-
-                                <div class="short_desc text-center">
-                                    <p>
-                                        Борщ овощной с грибами, салат "Витаминный”, дополнительный набо
-                                    </p>
-
-                                </div>
-
-                                <div class="price text-center">
-                                    130 грн
-                                </div>
-                            </div>
-                        </div>
-                    <?php }  ?>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-
-
-        </div>
-
-
-
-
-
-
         <div class="clearfix"></div>
 
         <!--                Салаты-->
-        <?= CategorysliderWidget::widget(['category_id' => 3]) ?>
+        <?php CategorysliderWidget::widget(['category_id' => 3]) ?>
 
         <!-- Первые блюда-->
+        <div class="clearfix"></div>
+        <?= CategorysliderWidget::widget(['category_id' => 5]) ?>
+
         <div class="clearfix"></div>
         <?= CategorysliderWidget::widget(['category_id' => 5]) ?>
 

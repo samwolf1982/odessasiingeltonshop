@@ -3,7 +3,7 @@ $('.owl-carousel').owlCarousel({
     // items:5,
     nav: true,
     dots:false,
-    navText: ["<img class='simple_load' src='images/prev.png'>","<img class='simple_load' src='images/next.png'>"],
+    navText: ["<img class='simple_load' src='/images/prev.png'>","<img class='simple_load' src='/images/next.png'>"],
     merge:true,
     loop:true,
     autoWidth:false,

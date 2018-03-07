@@ -1,12 +1,17 @@
 <?php
 
+use app\components\CartInformerExt;
 use app\components\ChangeCountExt;
+use app\components\DeliveryInformer;
+use app\components\TotalPayExtInformer;
+use app\components\TotalPayInformer;
 use dvizh\cart\widgets\DeleteButton;
 use dvizh\cart\widgets\TruncateButton;
 use dvizh\cart\widgets\ChangeCount;
 use dvizh\cart\widgets\CartInformer;
 use dvizh\cart\widgets\ChangeOptions;
 use dvizh\order\widgets\OrderForm;
+
 use frontend\assets\CartAsset;
 use frontend\assets\TempAsset;
 
@@ -24,7 +29,7 @@ $this->registerCssFile('/js/bootstrap-datetimepicker-master/build/css/bootstrap-
 
 CartAsset::register($this);
 
-TempAsset::register($this);
+//TempAsset::register($this);
 
 ?>
 
@@ -79,7 +84,6 @@ TempAsset::register($this);
                                 <h1><?= yii::t('cart', 'Cart'); ?></h1>
                                 <?php foreach($elements as $element) { ?>
                                         <div class="col-lg-6 col-xs-6">
-
                                             <strong><?=$element->getModel()->getCartName();?> ( <?=$element->getPrice();?> грн.)</strong>
                                             <?=ChangeOptions::widget(['model' => $element, 'type' => 'radio']); ?>
                                         </div>
@@ -164,7 +168,7 @@ TempAsset::register($this);
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <div class="wrap_time_select">
-                                            <?=CartInformer::widget(['text'=>'{p}']); ?>
+                                            <?=CartInformerExt::widget(['text'=>'{p}']); ?>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -176,7 +180,7 @@ TempAsset::register($this);
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <div class="wrap_time_select">
-                                            520 грн
+                                                     <?=DeliveryInformer::widget(['text'=>'{p}']); ?>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -188,7 +192,7 @@ TempAsset::register($this);
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <div class="wrap_time_select">
-                                            520 грн
+                                            <?=TotalPayExtInformer::widget(['text'=>'{p}']); ?>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -201,7 +205,7 @@ TempAsset::register($this);
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <div class="wrap_time_select total_price">
-                                            1 520 грн
+                                            <?=TotalPayInformer::widget(['text'=>'{p}']); ?>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -248,175 +252,12 @@ TempAsset::register($this);
                         </div>
                     </div>
                     <div class="clearfix"></div>
-
-
                     <div class="form_area">
                         <?=OrderForm::widget(['view'=>'@app/components/views/order-form/form']);?>
                     </div>
 
+                    <hr style="border-color: grey;">
 
-                    <hr style="border-color: red;">
-
-                    <div class="form_area">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label " for="name">Имя:</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Ваше имя">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label " for="phone">Телефон:</label>
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Номер телефона">
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label class="control-label " for="email">E-mail:</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr>
-
-                        <div class="col-sm-12">
-                            <div class="add_day">
-                                <div class="pull-left">
-                                    Способ доставки
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <!--    radio-->
-                        <div class="col-sm-6 flexradio">
-                            <div class="form-group">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Самовывоз <span class="yelowtext"> (Скидка 10%) </span></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 flexradio">
-                            <div class="form-group">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">Доставка курьером</label>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-
-                        <!--    address-->
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label " for="street">Улица:</label>
-                                <input type="text" class="form-control" id="street" name="street" placeholder="Улица">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label " for="district">Район:</label>
-                                <input type="text" class="form-control" id="district" name="district" placeholder="Район">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label " for="number_home">Дом:</label>
-                                <input type="text" class="form-control" id="number_home" name="number_home" placeholder="Дом">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label " for="number_flat">Квартира:</label>
-                                <input type="text" class="form-control" id="number_flat" name="number_flat" placeholder="Квартира">
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input class="form-check-input" type="checkbox" id="private_house" value="option1">
-                                <label class="form-check-label" for="private_house">Я живу в частном доме</label>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-
-
-                        <!--    curier info-->
-                        <div class="col-sm-12">
-                            <h4 class="curier_text">Информация для курьера (необязательно)</h4>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="pt2"></div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label " for="number_dress">Номер парадной:</label>
-                                <input type="text" class="form-control" id="number_dress" name="number_dress" placeholder="Номер парадной">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label " for="number_domofon">Код домофона:</label>
-                                <input type="text" class="form-control" id="number_domofon" name="number_domofon" placeholder="Код домофона:">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label " for="number_floar">Этаж: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                                <input type="text" class="form-control" id="number_floar" name="number_floar" placeholder="Этаж">
-                            </div>
-                        </div>
-
-
-                        <!--    pay method-->
-                        <div class="col-sm-12">
-                            <h4 class="curier_text">Способ оплаты</h4>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="pt2"></div>
-                        <div class="col-sm-6 flexradio">
-                            <div class="form-group">
-                                <input class="form-check-input" type="radio" name="paymentmethods" id="paymentmethods1" value="option1">
-                                <label class="form-check-label" for="paymentmethods1">       Оплата наличными при получении</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 flexradio">
-                            <div class="form-group">
-                                <input class="form-check-input" type="radio" name="paymentmethods" id="paymentmethods1" value="option1">
-                                <label class="form-check-label" for="paymentmethods1">Оплата с банковской карты</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 flexradio">
-                            <div class="form-group">
-                                <input class="form-check-input" type="radio" name="paymentmethods" id="paymentmethods1" value="option1">
-                                <label class="form-check-label" for="paymentmethods1">Оплата в день заказа, при доставке</label>
-                            </div>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <!--remember me-->
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label " for="timefinish">Сдача с:</label>
-                                <input type="text" class="form-control" id="timefinish" name="timefinish" placeholder="">
-                            </div>
-                        </div>
-                        <div class="col-sm-8 flexradio rememberme">
-
-                            <div class="form-group">
-                                <input class="form-check-input" type="checkbox" id="rememberme" value="option1">
-                                <label class="form-check-label" for="rememberme">Запомнить меня как постоянного пользователя</label>
-                            </div>
-
-                        </div>
-
-
-                        <div class="clearfix"></div>
-                        <div class="pt2"></div>
-                        <div class="col-sm-12">
-                            <div class="submitarea">
-                                <button type="submit" class="btn btn-success submit">Оформить заказ</button>
-                            </div>
-                        </div>
-
-                    </div>
                     <div class="clearfix"></div>
 
 

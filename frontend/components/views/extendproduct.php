@@ -23,7 +23,7 @@ use frontend\assets\CategorysliderAsset;
                     <h4><a href="#"><?=$item->name?> </a></h4>
                     <hr>
 
-                    <?=ChangeCountExt::widget(['model' => $item,'parent_id'=>0]);?>
+                    <?=ChangeCountExt::widget(['model' => $item,'parent_id'=>0,'text'=>'количество:']);?>
 
                     <hr>
 
@@ -55,10 +55,10 @@ use frontend\assets\CategorysliderAsset;
                     <div class="caption">
                         <h4><a href="#"><?=$it->name?>  </a></h4>
 
-                        <?=ChangeCountExt::widget(['model' => $it,'parent_id'=>$item->id]);?>
+                        <?=ChangeCountExt::widget(['model' => $it,'parent_id'=>$item->id,'text'=>'количество:']);?>
                         <div class="short_desc text-center">
                             <p>
-                                Борщ овощной с грибами, салат "Витаминный”, дополнительный набо
+                                <?=$it->short_text?>
                             </p>
                         </div>
                         <div class="price text-center">

@@ -12,7 +12,6 @@ class MainpageAsset extends AssetBundle
 
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-   // public  $sourcePath = '@app/HTML/bootstrap-3.3.7/dist';
     public $css = [
 //        'css/mainpage.css',
 
