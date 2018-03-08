@@ -9,7 +9,6 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-
     public $basePath = '@webroot';
     public $baseUrl = '@web';
    // public  $sourcePath = '@app/HTML/bootstrap-3.3.7/dist';
@@ -17,13 +16,13 @@ class AppAsset extends AssetBundle
         'css/fontsulpoad.css',
         'css/bootstrap-grid-custom.css',
         'js/OwlCarousel2-2.2.1/OwlCarousel2-2.2.1/dist/assets/owl.carousel.css',
-
         'js/pnotify/dist/PNotifyBrightTheme.css',
 
 //        'stylesheet/960.css',
 //        'stylesheet/screen.css',
 //        'stylesheet/color.css',
         'css/temp/temp.css',
+
     ];
 
     public $js = [

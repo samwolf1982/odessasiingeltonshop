@@ -14,6 +14,7 @@ use dvizh\order\widgets\OrderForm;
 
 use frontend\assets\CartAsset;
 use frontend\assets\TempAsset;
+use yii\bootstrap\ActiveForm;
 
 $this->title = yii::t('cart', 'Cart');
 
@@ -209,6 +210,22 @@ CartAsset::register($this);
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
+
+                                    <div class="col-sm-6 pull-left">
+                                        <div class="wrp_time_text">
+                                            <span class="text_total_price">Cдача с:</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <div class="wrap_time_select total_price">
+                                            <?php $form = ActiveForm::begin(); ?>
+                                            <?= $form->field($model_cart_surrender, 'surrender')->label('') ?>
+                                            <?php ActiveForm::end();?>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+
 
                                 </div>
                                 <div class="clearfix"></div>

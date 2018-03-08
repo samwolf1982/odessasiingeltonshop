@@ -76,7 +76,7 @@ class SiteController extends Controller
 
         //------------ ext prod
 //        $productsext[] = Productext::find()->category(10)->orderBy('id DESC')->all();
-        $productsext = Productext::find()->where(['in','id',[23,24]])->all();
+        $productsext = Productext::find()->where(['in','id',[23,24,28,29,30,31,34,35]])->all();
         $active_id_complex=23;
         if (isset($_GET['id'])){
             $active_id_complex=$_GET['id'];
