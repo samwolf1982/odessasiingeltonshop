@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
     ?>
 <?php } ?>
 <div class="dvizh_order_form">
-    <?php $form = ActiveForm::begin(['action' => Url::toRoute(['/order/order/create'])]); ?>
+
         <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
 
         <div class="row">
@@ -44,7 +44,6 @@ use yii\widgets\ActiveForm;
         <?php if($fields = $fieldFind->all()) { ?>
             <div class="row order-custom-fields">
                 <?php foreach($fields as $fieldModel) { ?>
-
                         <?php
                         if($widget = $fieldModel->type->widget) {
                             echo $widget::widget(['form' => $form, 'fieldModel' => $fieldModel]);
@@ -86,5 +85,4 @@ use yii\widgets\ActiveForm;
                 <?php } ?>
             </div>
         </div>
-    <?php ActiveForm::end(); ?>
 </div>

@@ -13,7 +13,7 @@ class MainpageAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-//        'css/mainpage.css',
+        'css/mainpage.css',
 
     ];
 

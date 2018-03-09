@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
 //        'stylesheet/960.css',
 //        'stylesheet/screen.css',
 //        'stylesheet/color.css',
-        'css/temp/temp.css',
+//        'css/temp/temp.css',
 
     ];
 

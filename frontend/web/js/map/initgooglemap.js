@@ -20,9 +20,18 @@ var  id_place_form_list=['inputext_7','inputext_8','inputext_5','inputext_6','in
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
+    var bounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(46.239928972161316, 30.222736324218772),
+        new google.maps.LatLng(46.665684925753474, 31.238971675781272)
+    );
     autocomplete = new google.maps.places.Autocomplete(
         /** @type {!HTMLInputElement} */(document.getElementById('address_text')),
-        {types: ['geocode']});
+        {types: ['geocode'],bounds:bounds});
+
+
+   // ((46.239928972161316, 30.222736324218772), (46.665684925753474, 31.238971675781272))
+// ,bounds: map.getBounds()
+    // map.getBounds()
 
     // When the user selects an address from the dropdown, populate the address
     // fields in the form.
@@ -166,6 +175,10 @@ function initMap() {
         zoom: 12,
         center: myLatlng
     });
+
+    // google.maps.event.addListener(map, 'bounds_changed', function() {
+    //     alert(map.getBounds());
+    // });
 
 
     var pinImage = new google.maps.MarkerImage("http://www.googlemapsmarkers.com/v1/B/009900/");

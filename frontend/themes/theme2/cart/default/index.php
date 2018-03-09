@@ -15,6 +15,7 @@ use dvizh\order\widgets\OrderForm;
 use frontend\assets\CartAsset;
 use frontend\assets\TempAsset;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 $this->title = yii::t('cart', 'Cart');
 
@@ -30,12 +31,12 @@ $this->registerCssFile('/js/bootstrap-datetimepicker-master/build/css/bootstrap-
 
 CartAsset::register($this);
 
-//TempAsset::register($this);
+TempAsset::register($this);
 
 ?>
 
 
-
+<?php $form = ActiveForm::begin(['action' => Url::toRoute(['/order/order/create'])]); ?>
         <div class="col-sm-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -75,12 +76,52 @@ CartAsset::register($this);
                             </div>
                         </div>
                     </div>
-                    <hr class="clear_hr">
+
                     <div class="clearfix"></div>
 
-
+                    <h1 class="text-center hidden"><?= yii::t('cart', 'Cart'); ?></h1>
                     <div class="food_area">
                         <div class="food_block">
+
+                            <?php foreach($elements as $element) { ?>
+                                <div class="food yellow" style="height: 170px;">
+                                    <div class="wrp_img_order">
+                                        <img  src="<?=$element->getModel()->getImage()->getUrl('170x170');?>" alt="food"> </a>
+                                    </div>
+
+                                    <div class="caption">
+                                        <h4><a href="#"><?=$element->getModel()->getCartName();?></a></h4>
+
+                                        <div class="input-group">
+                                            <span class="count_food_text hidden">количество: </span>
+                                            <div class="price text-left">
+                                                <?=$element->getPrice();?> грн.
+                                            </div>
+                                            <?=ChangeCountExt::widget(['model' => $element,'parent_id'=>0]);?>
+
+                                        </div>
+
+                                        <div class="short_desc text-left">
+                                            <p>
+                                               <?=$element->getModel()->short_text; ?>
+                                            </p>
+
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="delete">
+                                    <?=DeleteButton::widget(['model' => $element, 'text'=>'&nbsp;','cssClass'=>'delete_btn btn','lineSelector'=>'div']);?>
+                                    </div>
+
+                                </div>
+                            <?php }  ?>
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="food_block hidden ">
                             <div class="wrp_product_cart">
                                 <h1><?= yii::t('cart', 'Cart'); ?></h1>
                                 <?php foreach($elements as $element) { ?>
@@ -112,7 +153,6 @@ CartAsset::register($this);
                                             <?=DeleteButton::widget(['model' => $item, 'lineSelector' => '.row']);?>
                                         </div>
                                     </div>
-
 
                                 <div class="food yellow">
                                     <div class="wrp_img_order">
@@ -210,7 +250,7 @@ CartAsset::register($this);
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-
+                                    <hr style="border-color: grey;">
                                     <div class="col-sm-6 pull-left">
                                         <div class="wrp_time_text">
                                             <span class="text_total_price">Cдача с:</span>
@@ -219,9 +259,10 @@ CartAsset::register($this);
                                     </div>
                                     <div class="col-sm-6 text-right">
                                         <div class="wrap_time_select total_price">
-                                            <?php $form = ActiveForm::begin(); ?>
+
                                             <?= $form->field($model_cart_surrender, 'surrender')->label('') ?>
-                                            <?php ActiveForm::end();?>
+
+
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -270,11 +311,9 @@ CartAsset::register($this);
                     </div>
                     <div class="clearfix"></div>
                     <div class="form_area">
-                        <?=OrderForm::widget(['view'=>'@app/components/views/order-form/form']);?>
+                        <?=OrderForm::widget(['view'=>'@app/components/views/order-form/form','form'=>$form]);?>
                     </div>
-
                     <hr style="border-color: grey;">
-
                     <div class="clearfix"></div>
 
 
@@ -292,7 +331,7 @@ CartAsset::register($this);
             <!--       end main-->
         </div>
 
-
+<?php ActiveForm::end();?>
 
 
 

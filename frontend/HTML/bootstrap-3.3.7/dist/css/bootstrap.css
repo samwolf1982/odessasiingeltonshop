@@ -1414,7 +1414,7 @@ a.bg-danger:focus {
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: 14px;
+  margin-bottom: 0;
 }
 ul ul,
 ol ul,
@@ -7694,7 +7694,7 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
-  min-width: 144px;
+  min-width: 90px;
   height: 75px;
   text-align: center;
   list-style: none;
