@@ -6,7 +6,7 @@ use dvizh\shop\models\Category;
 use dvizh\shop\models\Producer;
 use kartik\export\ExportMenu;
 
-$this->title = 'Товары';
+$this->title = 'Комлексные обеды';
 $this->params['breadcrumbs'][] = ['label' => 'Магазин', 'url' => ['/shop/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-md-2">
-            <?= Html::a('Добавить товар', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Добавить комлексный обед', ['create'], ['class' => 'btn btn-success']) ?>
         </div>
         <div class="col-md-2">
             <?php

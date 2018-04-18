@@ -18,6 +18,7 @@ class TempAsset extends AssetBundle
 
     ];
     public $js = [
+        'js/temp.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

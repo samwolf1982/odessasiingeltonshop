@@ -149,7 +149,6 @@
   float: right;
 }
 .footer_foodarea .wrap_time_select input {
-  height: 32px;
   padding: 0;
   text-align: center;
 }
@@ -199,7 +198,6 @@
   width: 200px;
 }
 .wrap_time_select .form-group .datetimepicker input {
-  height: 32px;
   text-align: center;
 }
 .wrap_time_select .form-group .datetimepicker .input-group-addon {

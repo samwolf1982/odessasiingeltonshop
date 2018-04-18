@@ -26,7 +26,6 @@ class ChangeCountExt extends ChangeCount
     {
         parent::init();
         \frontend\assets\ChangeCountExtAsset::register($this->getView());
-
         return true;
 
     }
@@ -50,6 +49,7 @@ class ChangeCountExt extends ChangeCount
                 'data-href' => Url::toRoute($this->actionUpdateUrl),
             ]);
         } else {
+
             $input = Html::input('text', 'count', $this->defaultValue, [
                 'class' => 'dvizh-cart-element-before-count',
                 'data-line-selector' => $this->lineSelector,
@@ -59,6 +59,7 @@ class ChangeCountExt extends ChangeCount
         }
 
         if ($this->customView) {
+
             return $this->render($this->customView, [
                 'model' => $this->model,
                 'defaultValue' => $this->defaultValue,

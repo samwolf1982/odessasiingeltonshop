@@ -29,18 +29,18 @@ $('.owl-carousel').owlCarousel({
         },
 
         1200:{
-            items:3,
+            items:4,
             nav:true,
             loop:false
         },
         1366:{
-            items:3,
+            items:4,
             nav:true,
             loop:false
         },
 
         1440:{
-            items:3,
+            items:4,
             nav:true,
             loop:false
         },

@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = 'Добавить товар';
+$this->title = 'Добавить комлексный обед';
 $this->params['breadcrumbs'][] = ['label' => 'Товары', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \dvizh\shop\assets\BackendAsset::register($this);

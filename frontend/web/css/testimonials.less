@@ -1,0 +1,60 @@
+.tm{
+  @media screen and (min-width: 650px){
+    display: flex;
+  }
+
+  padding-top: 1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .coment_section {
+    padding: 1em;
+    background-color: #f8f8f8;
+    margin-bottom: 1em;
+    border-radius: 15px;
+
+      padding: 7px;
+      border-radius: 10px;
+      flex-basis: 48%;
+     a:hover{
+cursor: inherit;
+       color: #617e3b;
+       text-decoration: none;
+
+     }
+
+  }
+}
+
+.green_color{
+  color: #617e3b;
+  margin-left: 3px;
+}
+.plus_btn {
+  padding: 0 8px 2px 8px;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  background: #729545;
+  border-radius: 53px;
+  -webkit-border-radius: 53px;
+  -moz-border-radius: 53px;
+}
+.plus_btn:hover {
+  color: white;
+  text-decoration: none;
+  background: #8cb35a;
+}
+
+.plus_btn:hover div {
+  -webkit-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+.plus_btn div {
+  color: white!important;
+  -webkit-transition: -webkit-transform .6s ease-in-out;
+  -ms-transition: -ms-transform .6s ease-in-out;
+  transition: transform .6s ease-in-out;
+}

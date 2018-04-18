@@ -9,6 +9,7 @@ use frontend\assets\CategorysliderAsset;
 //CategorysliderAsset::register($this);
 ?>
 
+
 <?php $item= $product; ?>
 <!--order complex-->
 <div class="food_area">
@@ -20,7 +21,7 @@ use frontend\assets\CategorysliderAsset;
         <div class="order_area">
             <div class="food food_clear yellow">
                 <div class="caption">
-                    <h4><a href="#"><?=$item->name?> </a></h4>
+                    <h4><a href="#"><?=$item->name?>  </a></h4>
                     <hr>
 
                     <?=ChangeCountExt::widget(['model' => $item,'parent_id'=>0,'text'=>'количество:']);?>
@@ -34,26 +35,29 @@ use frontend\assets\CategorysliderAsset;
                         <?=BuyButton::widget(['model' => $item,'text'=>'Заказать']);?>
                     </div>
 
+                    <?php  if (!is_null($item->getRelations())){ ?>
                     <ul class="order_complex_list">
                         <?php foreach ($item->getRelations()->all() as $rel) {  ?>
                             <li><span class="prod_name"><?=$rel->name?></span>
                                 <br> <div class="wrp_price_ext_prod"> <span class="prod_price"><?=ShowPrice::widget(['model' => $rel]);?>грн </span>/<span class="prod_count dviz_prod_count_<?=$rel->id;?>">1</span>шт  </div> </li>
                         <?php  } ?>
                     </ul>
-
+                       <?php } ?>
 
 
                 </div>
             </div>
         </div>
 
+
+        <?php  if (!is_null($item->getRelations())){ ?>
         <div class="wrap_food">
             <?php
             foreach ($item->getRelations()->all()  as $it) { ?>
                 <div class="food yellow">
                     <img src="<?=$it->getImage()->getUrl('278x247');?>" alt="food">
                     <div class="caption">
-                        <h4><a href="#"><?=$it->name?>  </a></h4>
+                        <h4><a href="#"><?=$it->name?> </a></h4>
 
                         <?=ChangeCountExt::widget(['model' => $it,'parent_id'=>$item->id,'text'=>'количество:']);?>
                         <div class="short_desc text-center">
@@ -68,6 +72,7 @@ use frontend\assets\CategorysliderAsset;
                 </div>
             <?php }  ?>
         </div>
+        <?php } ?>
     </div>
     <div class="clearfix"></div>
 

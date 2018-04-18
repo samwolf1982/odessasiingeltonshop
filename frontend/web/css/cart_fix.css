@@ -1,0 +1,73 @@
+.container {
+  display: inherit!important;
+}
+.left_cart .food_area .food_block .food img {
+  height: auto;
+}
+.left_cart .wrp_fields_different label {
+  display: none;
+}
+.left_cart .wrp_fields_different .wrap_time_select .form-group,
+.left_cart .wrp_fields_different .form-group {
+  width: auto;
+  float: right;
+}
+.left_cart .wrp_fields_different .form-group {
+  float: right;
+}
+.left_cart .food_area .food_block .food {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 0;
+  align-items: center;
+}
+label[for="inputext_8"],
+label[for="inputext_5"],
+label[for="inputext_12"],
+label[for="inputext_12"],
+label[for="inputext_13"],
+label[for="inputext_14"],
+label[for="inputext_6"],
+label[for="order-client_name"],
+label[for="order-phone"],
+label[for="order-email"],
+label[for="order-shipping_type_id"],
+label[for="order-payment_type_id"] {
+  opacity: 0;
+  display: none;
+}
+label[for="inputext_7"] {
+  opacity: 0;
+}
+.under_select_day {
+  opacity: 0;
+  height: 25px;
+}
+.food_area .food_block .food .caption {
+  width: 50%;
+}
+.food_area .food_block .delete {
+  padding-top: 28px;
+}
+.form-group {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 580px) {
+  .food_area .food_block .food .caption {
+    width: 100%;
+  }
+  .food_area .food_block .food .caption h4 {
+    text-align: center;
+  }
+  .food_area .food_block .food .caption .input-group {
+    padding-left: 25%;
+  }
+}
+@media screen and (max-width: 430px) {
+  .food_area .food_block .food .caption .input-group {
+    padding-left: 5%;
+  }
+}
+.order-custom-fields .add_day {
+  display: none;
+}

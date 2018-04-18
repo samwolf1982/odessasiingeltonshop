@@ -4,18 +4,17 @@ use yii\helpers\Url;
 use yii\grid\GridView;
 use dosamigos\grid\columns\EditableColumn;
 
-$this->title = Html::encode($model->name);
+$this->title =  'Комлексный обед:   '.  Html::encode($model->name);
 $this->params['breadcrumbs'][] = ['label' => 'Товар', 'url' => ['index']];
 $this->params['breadcrumbs'][] = 'Обновить';
 \dvizh\shop\assets\BackendAsset::register($this);
 ?>
 <div class="product-update">
-
     <ul class="nav nav-tabs">
         <li class="active product-tab-label"><a href="#product-product" data-toggle="tab">Карточка товара</a></li>
-        <li class="options-tab-label"><a href="#product-modifications" data-toggle="tab">Модификации</a></li>
+        <li class="options-tab-label hidden"><a href="#product-modifications" data-toggle="tab">Модификации</a></li>
         <li class="prices-tab-label" ><a href="#product-prices" data-toggle="tab">Цены</a></li>
-        <li class="filters-tab-label"><a href="#product-filters" data-toggle="tab">Фильтры</a></li>
+        <li class="filters-tab-label hidden"><a href="#product-filters" data-toggle="tab">Фильтры</a></li>
         <li class="addfileds-tab-label"><a href="#product-fields" data-toggle="tab">Доп. поля</a></li>
     </ul>
 
@@ -132,7 +131,7 @@ $this->params['breadcrumbs'][] = 'Обновить';
                         [
                             'class' => EditableColumn::className(),
                             'attribute' => 'name',
-                            'url' => ['price/edit-field'],
+                            'url' => ['shop/price/edit-field'],
                             'type' => 'text',
                             'filter' => false,
                             'editableOptions' => [
@@ -143,7 +142,7 @@ $this->params['breadcrumbs'][] = 'Обновить';
                         [
                             'class' => EditableColumn::className(),
                             'attribute' => 'sort',
-                            'url' => ['price/edit-field'],
+                            'url' => ['shop/price/edit-field'],
                             'type' => 'text',
                             'editableOptions' => [
                                 'mode' => 'inline',
@@ -153,7 +152,7 @@ $this->params['breadcrumbs'][] = 'Обновить';
                         [
                             'class' => EditableColumn::className(),
                             'attribute' => 'available',
-                            'url' => ['price/edit-field'],
+                            'url' => ['shop/price/edit-field'],
                             'type' => 'select',
                             'editableOptions' => [
                                 'mode' => 'inline',
@@ -170,7 +169,7 @@ $this->params['breadcrumbs'][] = 'Обновить';
                         [
                             'class' => EditableColumn::className(),
                             'attribute' => 'price',
-                            'url' => ['price/edit-field'],
+                            'url' => [  'shop/price/edit-field'],
                             'type' => 'text',
                             'editableOptions' => [
                                 'mode' => 'inline',
@@ -180,14 +179,14 @@ $this->params['breadcrumbs'][] = 'Обновить';
                         [
                             'class' => EditableColumn::className(),
                             'attribute' => 'price_old',
-                            'url' => ['price/edit-field'],
+                            'url' => ['shop/price/edit-field'],
                             'type' => 'text',
                             'editableOptions' => [
                                 'mode' => 'inline',
                             ],
                             //'options' => ['style' => 'width: 40px;']
                         ],
-                        ['class' => 'yii\grid\ActionColumn', 'controller' => 'price', 'template' => '{delete}',  'buttonOptions' => ['class' => 'btn btn-default'], 'options' => ['style' => 'width: 30px;']],
+                        ['class' => 'yii\grid\ActionColumn', 'controller' => 'shop/price', 'template' => '{delete}',  'buttonOptions' => ['class' => 'btn btn-default'], 'options' => ['style' => 'width: 30px;']],
                     ],
                 ]); ?>
             <?php } else { ?>

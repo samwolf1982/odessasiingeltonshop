@@ -31,7 +31,7 @@ class AttachImagesext extends AttachImages
     public function getImage()
     {
         $finder = $this->getImagesFinder(['modelName'=>'Product']);
-        yii::error($finder);
+       // yii::error($finder);
         $imageQuery = Image::find()->where($finder);
         $imageQuery->orderBy(['isMain' => SORT_DESC,'sort' => SORT_DESC, 'id' => SORT_ASC]);
         $img = $imageQuery->one();

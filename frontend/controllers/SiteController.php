@@ -2,11 +2,13 @@
 namespace frontend\controllers;
 
 use common\models\Productext;
+use common\models\Topmenutoslider;
 use Yii;
 use yii\web\Controller;
 use dvizh\shop\models\Category;
 use dvizh\shop\models\Product;
 use frontend\models\ContactForm;
+use yii\web\Cookie;
 use yii\web\Response;
 
 /**
@@ -14,6 +16,31 @@ use yii\web\Response;
  */
 class SiteController extends Controller
 {
+
+
+
+    public function beforeAction($action)
+    {
+
+        $user_tmp_id=Yii::$app->user->getId();
+        if(is_null($user_tmp_id)){
+
+            if (!isset(Yii::$app->request->cookies['user_tmp_id'])) {
+                $user_tmp_id = rand(-999999999,-1);
+                $cookie = new Cookie([
+                    'name' => 'user_tmp_id',
+                    'value' => $user_tmp_id,
+                    'expire' => time() + 90*24*60*60,
+                ]);
+                \Yii::$app->response->cookies->add($cookie);
+            }
+
+        }
+
+
+        return parent::beforeAction($action);
+    }
+
 
     /**
      * @inheritdoc
@@ -73,13 +100,25 @@ class SiteController extends Controller
 
         $products = $query->limit(12)->all();
 
-
         //------------ ext prod
 //        $productsext[] = Productext::find()->category(10)->orderBy('id DESC')->all();
-        $productsext = Productext::find()->where(['in','id',[23,24,28,29,30,31,34,35]])->all();
-        $active_id_complex=23;
+
+
+
+        $productsext = Productext::find()->where(['category_id'=>Yii::$app->params['ext_category_id']])->all();
+        $active_id_complex=$productsext[0]->id;
         if (isset($_GET['id'])){
             $active_id_complex=$_GET['id'];
+        }
+        $top_menu_to_slider_widget_bottom=[];
+        $temp_top_menu_to_slider_widget_bottom=Topmenutoslider::find()->where(1)->orderBy(['sort'=>SORT_ASC])->all();
+        if ($temp_top_menu_to_slider_widget_bottom)
+        {
+            // todo оптимизировать запрос в один
+            foreach ($temp_top_menu_to_slider_widget_bottom as $item_top_cat) {
+                      $c_temp=Category::find()->select(['name'])->where(['id'=>$item_top_cat->category_id])->one();
+                      if ($c_temp){$top_menu_to_slider_widget_bottom[]=['cat_id'=>$item_top_cat->category_id,'name'=>$c_temp->name];}
+           }
         }
         //----------
         return $this->render('index', [
@@ -89,8 +128,16 @@ class SiteController extends Controller
             'category' => $category,
             'productsext'=>$productsext,
             'active_id_complex'=>$active_id_complex,
+            'top_menu_to_slider_widget_bottom'=>$top_menu_to_slider_widget_bottom,
         ]);
     }
+
+
+    /**
+     * обновление корзины
+     *
+     * @return array
+     */
     public function actionUpdateextproduct()
     {
 
@@ -100,7 +147,10 @@ class SiteController extends Controller
         $ext_prod = $session->get('prodext');
         $ext_prod[$_GET['prod_id']]=['count'=>$_GET['newvalue']];
         $session->set('prodext',$ext_prod);
-        $session->set('distance',$_GET['distance']);
+
+        if (isset($_GET['distance'])){ // растояние
+            $session->set('distance',$_GET['distance']);
+        }
         $prod=  Productext::find()->where(['id'=>$_GET['parent_id']])->one();
         $delivery_id=isset($_GET['delivery_id'])?$_GET['delivery_id']:'';
         $session->set('orderShippingType',$delivery_id);

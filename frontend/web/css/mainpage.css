@@ -1,3 +1,24 @@
+@media screen and (max-width: 1500px) {
+  .food_area .food_block .food {
+    max-width: 220px;
+  }
+}
+.navbar-header.flexed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-header.flexed .fa-shopping-cart {
+  font-size: 24px;
+}
+.navbar-header.flexed .wrp_cart_mobi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.food_block_header h2 {
+  font-size: 29px;
+}
 .food_area .food_block_order .short_desc {
   display: none!important;
 }
@@ -33,4 +54,9 @@
 }
 .food_area .food_block.food_block_order .order_area > div > div > div.price {
   display: initial;
+}
+.stisky_ankor {
+  opacity: 0;
+  position: relative;
+  top: -90px;
 }

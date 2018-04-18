@@ -7,11 +7,12 @@
   padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
   margin-bottom: @line-height-computed;
   list-style: none;
-  background-color: @breadcrumb-bg;
+  background-color: transparent;
   border-radius: @border-radius-base;
 
   > li {
     display: inline-block;
+    text-transform: capitalize;
 
     + li:before {
       content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
@@ -25,6 +26,7 @@
       text-decoration: none;
       font-family: "MuseoSansCyrl-300";
       font-size: 14px;
+      text-transform: capitalize;
     }
   }
 
@@ -33,6 +35,7 @@
 
       font-family: "MuseoSansCyrl-300";
       font-size: 14px;
+    text-transform: capitalize;
 
   }
 }

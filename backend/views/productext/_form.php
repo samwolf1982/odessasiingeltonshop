@@ -10,6 +10,9 @@ use kartik\select2\Select2;
 use dvizh\seo\widgets\SeoForm;
 
 \dvizh\shop\assets\BackendAsset::register($this);
+
+
+
 ?>
 
 <div class="product-form">
@@ -64,15 +67,7 @@ use dvizh\seo\widgets\SeoForm;
 
     <div class="row">
         <div class="col-lg-6 col-xs-6">
-            <?= $form->field($model, 'category_id')
-                ->widget(Select2::classname(), [
-                'data' => Category::buildTextTree(),
-                'language' => 'ru',
-                'options' => ['placeholder' => 'Выберите категорию ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]); ?>
+            <?php  // $form->field($model, 'category_id')->widget(Select2::classname(), ['data' => Category::buildTextTree(), 'language' => 'ru', 'options' => ['placeholder' => 'Выберите категорию ...'], 'pluginOptions' => ['allowClear' => true],]); ?>
             
             <?= $form->field($model, 'producer_id')
                 ->widget(Select2::classname(), [
@@ -85,16 +80,7 @@ use dvizh\seo\widgets\SeoForm;
             ]); ?>
         </div>
         <div class="col-lg-6 col-xs-6">
-            <?= $form->field($model, 'category_ids')
-                ->label('Прочие категории')
-                ->widget(Select2::classname(), [
-                'data' => Category::buildTextTree(),
-                'language' => 'ru',
-                'options' => ['multiple' => true, 'placeholder' => 'Доп. категории ...'],
-                'pluginOptions' => [
-                    'allowClear' => true
-                ],
-            ]); ?>
+            <?php // $form->field($model, 'category_ids')->label('Прочие категории')->widget(Select2::classname(), ['data' => Category::buildTextTree(), 'language' => 'ru', 'options' => ['multiple' => true, 'placeholder' => 'Доп. категории ...'], 'pluginOptions' => ['allowClear' => true],]); ?>
         </div>
     </div>
 
@@ -125,7 +111,9 @@ use dvizh\seo\widgets\SeoForm;
     <div class=" panel panel-default related-products-block">
         <div class="panel-heading"><strong>Связанные продукты</strong></div>
         <div class="panel-body">
-            <?=\dvizh\relations\widgets\Constructor::widget(['model' => $model]);?>
+            <!--     только из определеной категории  комплексный набор -->
+            <?=\dvizh\relations\widgets\Constructor::widget(['model' => $model,'diff'=> Yii::$app->params['ext_items_category_id']]);?>
+
         </div>
     </div>
 

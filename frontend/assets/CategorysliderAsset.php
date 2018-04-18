@@ -14,7 +14,7 @@ class CategorysliderAsset extends AssetBundle
     public $baseUrl = '@web';
    // public  $sourcePath = '@app/HTML/bootstrap-3.3.7/dist';
     public $css = [
-//        'css/mainpage.css',
+        'css/slider_widget.css',
 
     ];
 

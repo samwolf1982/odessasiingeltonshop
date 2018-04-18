@@ -79,7 +79,12 @@ return [
             'on cart_cost' => function($event) {
 //                $event->cost = ($event->cost*50)/100;
                 $event->cost =   $event->cost;
-            }
+            },
+            'on cart_put' => function($event) {
+
+            yii::error('ssssssss');
+            },
+          //  EVENT_CART_PUT
 //            'pathMap' => [
 //                 '@app/views' => '@app/themes/theme2/cart',
 //                '@app/modules' => '@app/themes/theme2/cart', // <-- !!!
@@ -109,15 +114,16 @@ return [
             'imagesStorePath' => dirname(dirname(__DIR__)).'/frontend/web/images/store', //path to origin images
             'imagesCachePath' => dirname(dirname(__DIR__)).'/frontend/web/images/cache', //path to resized copies
             'graphicsLibrary' => 'GD',
-            'placeHolderPath' => '@webroot/images/placeHolder.png',
+            'placeHolderPath' => '@webroot/images/no_cat_img.png',
         ],
         'order' => [
             'class' => 'dvizh\order\Module',
             'successUrl' => '/site/thanks', //Страница, куда попадает пользователь после успешного заказа
-            'adminNotificationEmail' => 'test@yandex.ru', //Мыло для отправки заказов
+            'adminNotificationEmail' => 'biryukwolf@yahoo.com', //Мыло для отправки заказов
             'as use_certificate' => '\common\aspects\UseCertificate',
             'as order_filling' => '\common\aspects\OrderFilling',
         ],
+
         'cart' => [
             'class' => 'dvizh\cart\Module',
 

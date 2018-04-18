@@ -14,6 +14,11 @@ class m170317_090004_news extends Migration
 
     public function safeUp()
     {
+
+
+        if (!$this->tableExists('news')){
+
+
         $tableOptions = 'ENGINE=InnoDB';
 
         $this->createTable(
@@ -28,10 +33,24 @@ class m170317_090004_news extends Migration
                 'status'=> $this->string()->notNull()->defaultValue('draft'),
             ],$tableOptions
         );
+        }
     }
 
     public function safeDown()
     {
         $this->dropTable('{{%news}}');
+    }
+
+    private function tableExists($tableName, $db = null)
+    {
+        if ($db)
+            $dbConnect = \Yii::$app->get($db);
+        else
+            $dbConnect = \Yii::$app->get('db');
+
+        if (!($dbConnect instanceof \yii\db\Connection))
+            throw new \yii\base\InvalidParamException;
+
+        return in_array($tableName, $dbConnect->schema->getTableNames());
     }
 }

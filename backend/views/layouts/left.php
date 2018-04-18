@@ -2,6 +2,7 @@
 
     <section class="sidebar">
 
+
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
@@ -17,6 +18,19 @@
                         'visible' => Yii::$app->user->can('superadmin'),
                         'url' => ['/order/order/index']
                     ],
+                         [
+                        'label' => 'Заявки ' . backend\components\CountByStatusInformermail::widget([
+                                'renderEmpty' => true,
+                                'iTagCssClass' => '',
+                                'aTag' => false
+                            ]) ,
+                        'icon' => '	fa fa-envelope-o',
+                        'visible' => Yii::$app->user->can('superadmin'),
+                        'url' => ['/modalorder/index']
+                    ],
+
+
+
                     ['label' => 'Магазин', 'options' => ['class' => 'header']],
                     [
                         'label' => 'Магазин',
@@ -24,11 +38,25 @@
                         'url' => '#',
                         'visible' => Yii::$app->user->can('superadmin'),
                         'items' => [
-                            ['label' => 'Комплексы', 'url' => ['/productext/index']],
+
                             ['label' => 'Товары', 'url' => ['/shop/product']],
+                            [
+                                'label' => 'Комплексные обеды',
+                                'icon' => 'circle-o',
+                                'url' => '#',
+                                'items' => [
+                                    ['label' => 'Обеды', 'url' => ['/productext/index']],
+                                    ['label' => 'Составляющие', 'url' => ['/productexitems/index']],
+
+                                ],
+                            ],
+
+
                             ['label' => 'Категории', 'url' => ['/shop/category']],
                             ['label' => 'Производители', 'url' => ['/shop/producer']],
                             ['label' => 'Фильтры', 'url' => ['/filter/filter']],
+                            ['label' => 'Боковое меню', 'url' => ['/leftmenu/index']],
+                            ['label' => 'Верхние категории', 'url' => ['/topmenutoslider/index']],
                         ],
                     ],
                     [

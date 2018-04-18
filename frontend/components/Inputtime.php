@@ -9,14 +9,24 @@ class Inputtime extends \yii\base\Widget
     public $fieldModel = null;
     public $form = null;
     public $defaultValue = '';
-    
+    public $change_bootstrap;
+    public $other_place;
+
+
+    public function init(){
+        parent::init();
+        if ($this->change_bootstrap === null) {
+            $this->change_bootstrap ='col-sm-6';
+        }
+    }
+
     public function run()
     {
         $fieldValueModel = new FieldValue;
         $fieldValueModel->value = $this->defaultValue;
 
 
-        return '<div class="col-sm-6"> <div class="wrap_time_select">
+        return '<div class="'.$this->change_bootstrap.'"> <div class="wrap_time_select">
                                         <div class="form-group ">
                                         <label class="control-label" for="datetimepicker'.$this->fieldModel->id.'">'.$this->fieldModel->name.'</label> 
                                             <div class="input-group date datetimepicker" id="datetimepicker'.$this->fieldModel->id.'">

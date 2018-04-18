@@ -1,0 +1,44 @@
+.food_area {
+  padding-top: 1em;
+}
+.food_block {
+  margin-top: -3em;
+}
+.food_block .caption h4 {
+  margin: 0px;
+  margin-top: 5px;
+  height: 54px;
+}
+.food_area .food_block .food img {
+  width: 100%;
+  height: 220px;
+}
+.food_area .food_block .food .btn-success {
+  height: 26px;
+  padding: 0 20px;
+}
+.dvizh-cart-buy-button.btn.btn-success {
+  padding-top: 5px;
+}
+.food_area .food_block .food {
+  max-width: 200px;
+  max-height: 370px;
+}
+.food_area .food_block .food .like_me {
+  position: relative;
+  height: 0;
+  top: 10px;
+  right: -10px;
+}
+.food_area .food_block .food .like_me img {
+  width: 25px;
+  height: 25px;
+  transition: all 0.2s ease-in-out;
+}
+.likemeimg,
+.quicklook {
+  cursor: pointer;
+}
+.food_area .food_block .food .like_me img:hover {
+  transform: scale(1.1);
+}

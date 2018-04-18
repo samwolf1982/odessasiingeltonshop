@@ -204,16 +204,20 @@
 
 
 
-
+.btn-success
 /*
  * Base structure
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 90px;
+  padding-top: 70px;
 }
 
+a.phone{
+  font-size: 16px!important;
+
+}
 
 /*
  * Global add-ons
@@ -288,11 +292,12 @@ body {
     padding-left: 40px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) and  (max-width: 1024px){
   .main {
     padding: 80px 20px;
 
   }
+
 }
 @media (min-width: 1200px) {
   .main {
@@ -348,7 +353,7 @@ body {
   background-color: white;
   border-bottom: 1px solid lightgrey;
   padding-top: 3px;
-  padding-bottom: 5px;
+  //padding-bottom: 5px;
 
 }
 #navbar_under{
@@ -461,12 +466,12 @@ body {
   }
   .week_name{
     font-family: "MuseoSansCyrl-700";
-    font-size: 18px;
+    font-size: 16px;
     color: #242424;
   }
   .week_time{
     font-family: "MuseoSansCyrl-300";
-    font-size: 15px;
+    font-size: 14px;
     color: #717171;
   }
 
@@ -570,7 +575,9 @@ body {
 .caption{
   h4{
     text-align: center;
-    min-height: 54px;
+    min-height: initial;
+    height: 54px;
+    overflow: hidden;
     a{
       font-family: "MuseoSansCyrl-700";
       font-size: 20px;
@@ -607,6 +614,11 @@ body {
 
     .food{
 
+
+      .btn-success{
+        height: 46px;
+        padding: 3px 18px;
+      }
       -webkit-box-shadow: 8px 9px 5px -5px rgba(131,166,87,0.3);
       -moz-box-shadow: 8px 9px 5px -5px rgba(131,166,87,0.3);
       box-shadow: 8px 9px 5px -5px rgba(131,166,87,0.3);
@@ -639,7 +651,7 @@ body {
         padding-left: 30px;
         align-items: center;
         input{
-          width: 64px;
+          width: 38px;
           height: 25px;
           text-align: center;
         }
@@ -647,27 +659,27 @@ body {
         .input-group-addon_f{
           border-top-left-radius: 14px;
           border-bottom-left-radius: 12px;
-          height: 25px;
-          width: 30px;
+          height: 20px;
+          width: 20px;
 
         }
 
         .input-group-addon_f:before{
           content: '-';
           position: relative;
-          top: -4px;
+          top: -7px;
           right: 1px;
         }
         .input-group-addon_l{
           border-top-right-radius: 14px;
           border-bottom-right-radius: 12px;
-          height: 25px;
-          width: 30px;
+          height: 20px;
+          width: 20px;
         }
         .input-group-addon_l:after{
           content: '+';
           position: relative;
-          top: -5px;
+          top: -8px;
           right: 5px;
         }
       }
@@ -725,7 +737,7 @@ body {
 .our_menu:before {
   content: url("../../../images/restaurant-menu.png");
   position: relative;
-  top: 7px;
+  top: 5px;
   left: -6px;
   //content:"ssss";
 }
@@ -740,7 +752,7 @@ body {
 .check_order_menu:before {
   content: url("../../../images/hot-food-in-a-bowl copy.png");
   position: relative;
-  top: 2px;
+  top: 3px;
   left: -6px;
   //content:"ssss";
 }
@@ -760,7 +772,7 @@ body {
   padding: 0;
   padding-top: 5px;
   img{
-    height: 40px;
+    height: 28px;
   }
 }
 
@@ -777,11 +789,26 @@ body {
 
 }
 #navbar_under .navbar-nav>li>a.cart_order_info,#navbar_under .navbar-nav>li{
-  line-height: 24px;
+  line-height: 20px;
 }
 #navbar_under .navbar-nav>li{
   padding-right: 25px;
+  font-size: 14px;
 }
+#navbar_under {
+  .navbar-form.navbar-left a button{
+
+      margin-top: 2px;
+  }
+
+    .navbar-form.navbar-right{
+      button{
+      margin-top: 2px;
+    }
+  }
+}
+
+
 
 .liked:after{
   content: attr(title);
@@ -790,8 +817,8 @@ body {
   color: white;
   position: absolute;
   left: 0;
-  top: 21px;
-  left: 21px;
+  top: 16px;
+  left: 16px;
   white-space: nowrap;
   z-index: 20;
   -moz-border-radius: 15px;
@@ -826,13 +853,14 @@ body {
       a{
         padding-right: 5px;
         padding-left: 0;
+
       }
     }
     .phone:before{
       content: url("../../../images/smartphone (2).png");
       position: relative;
       top: 1px;
-      left: -5px;
+      left: -8px;
     }
 
     li{
@@ -844,6 +872,7 @@ body {
         border: transparent;
         outline: none;
         border-color: transparent;
+        font-size: 14px;
       }
     }
   }
@@ -855,7 +884,8 @@ body {
   }
 }
 .wrap_logo{
-  padding-top: 5px;
+  padding-top: 2px;
+  padding-bottom: 4px;
 }
 
 
@@ -999,13 +1029,13 @@ footer{
   }
   .title{
     font-family: "MuseoSansCyrl-700";
-    font-size: 24px;
+    font-size: 16px;
     color: white;
   }
   li{
     a{
       font-family: "MuseoSansCyrl-300";
-      font-size: 18px;
+      font-size: 14px;
       color: #dadada;
     }
     a:hover{
@@ -1017,25 +1047,25 @@ footer{
   .place:before{
     content: url("../../../images/placeholder.png");
     position: relative;
-    top: 1px;
+    top: 5px;
     left: -10px;
   }
   .mail:before{
     content: url("../../../images/envelope.png");
     position: relative;
-    top: 1px;
+    top: 5px;
     left: -10px;
   }
   .time:before{
     content: url("../../../images/clock (1).png");
     position: relative;
-    top: 1px;
+    top: 5px;
     left: -10px;
   }
   .phone:before{
     content: url("../../../images/phone-call (2).png");
     position: relative;
-    top: 1px;
+    top: 5px;
     left: -10px;
   }
 
@@ -1069,6 +1099,17 @@ footer{
 
 .footer2,.footer3,.footer4,.footer5,.footer6{
   padding-left: 3em;
+}
+.footer4,.footer5{
+  .title{
+    margin-top: 0;
+  }
+}
+
+.footer1 img{
+  max-width: 200px;
+  margin-top: 17px;
+  margin-bottom: 15px;
 }
 
 
@@ -1153,11 +1194,38 @@ and (max-device-width : 736px) {
 }
 
 
+.food_area .food_block .food .input-group{
+  padding-left: 70px;
+}
 
 
+.food_area .food_block .food .input-group input {
+  width: 28px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+}
 
 
+.food_block_header{
+  height: 7em;
+}
 
 
+@media (min-width: 768px) and  (max-width: 1024px){
 
+  #menu {
+    padding-top: 57px!important;
+  }
+}
 
+@media (max-width: 790px){
+
+  .breadcrumb{
+    padding-left: 30px;
+  }
+}
+
+.phone{
+
+}

@@ -1082,8 +1082,9 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
+  padding-top: 58px;
   font-family: "MuseoSansCyrl-500";
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #242424;
   background-color: #fff;
@@ -1267,7 +1268,7 @@ h1,
 }
 h2,
 .h2 {
-  font-size: 43px;
+  font-size: 24px;
 }
 h3,
 .h3 {
@@ -2550,7 +2551,7 @@ output {
   height: 42px;
   padding: 6px 12px;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
@@ -3060,9 +3061,10 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  height: 45px;
+  height: 34px;
   padding: 0 34px;
   font-family: "MuseoSansCyrl-500";
+  font-size: 16px;
   color: #333;
   color: #686868;
   background-color: #fff;
@@ -3201,9 +3203,10 @@ fieldset[disabled] .btn-primary.focus {
   background-color: #fff;
 }
 .btn-success {
-  height: 45px;
-  padding: 0 34px;
+  height: 34px;
+  padding: 0 26px;
   font-family: "MuseoSansCyrl-500";
+  font-size: 16px;
   color: #fff;
   color: white;
   background-color: #729545;
@@ -3343,9 +3346,10 @@ fieldset[disabled] .btn-info.focus {
   background-color: #fff;
 }
 .btn-warning {
-  height: 45px;
-  padding: 0 34px;
+  height: 34px;
+  padding: 0 26px;
   font-family: "MuseoSansCyrl-500";
+  font-size: 16px;
   color: #fff;
   color: white;
   background-color: #f78d46;
@@ -4069,7 +4073,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 2px 15px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -4177,7 +4181,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-top: 11px;
   padding-bottom: 11px;
   font-family: "MuseoSansCyrl-300";
-  font-size: 20px;
+  font-size: 18px;
   color: #333;
   text-transform: uppercase;
   border-radius: 0;
@@ -4805,11 +4809,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 8px 15px;
   margin-bottom: 28px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: transparent;
   border-radius: 4px;
 }
 .breadcrumb > li {
   display: inline-block;
+  text-transform: capitalize;
 }
 .breadcrumb > li + li:before {
   padding: 0 5px;
@@ -4823,11 +4828,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   font-size: 14px;
   color: #414141;
   text-decoration: none;
+  text-transform: capitalize;
 }
 .breadcrumb > .active {
   font-family: "MuseoSansCyrl-300";
   font-size: 14px;
   color: #617e3b;
+  text-transform: capitalize;
 }
 .pagination {
   display: inline-block;
@@ -7492,12 +7499,11 @@ button.close {
 .glyphicon-wrench:before {
   content: "\1f527";
 }
-/*
- * Base structure
- */
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 90px;
+.btn-success body {
+  padding-top: 70px;
+}
+a.phone {
+  font-size: 16px!important;
 }
 /*
  * Global add-ons
@@ -7565,7 +7571,7 @@ body {
     padding-left: 40px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .main {
     padding: 80px 20px;
   }
@@ -7603,7 +7609,6 @@ body {
 }
 .wrap_under_nav {
   padding-top: 3px;
-  padding-bottom: 5px;
   background-color: white;
   border-bottom: 1px solid lightgrey;
 }
@@ -7727,12 +7732,12 @@ body {
 }
 .wrap_week_menu .week_name {
   font-family: "MuseoSansCyrl-700";
-  font-size: 18px;
+  font-size: 16px;
   color: #242424;
 }
 .wrap_week_menu .week_time {
   font-family: "MuseoSansCyrl-300";
-  font-size: 15px;
+  font-size: 14px;
   color: #717171;
 }
 .wrap_week_menu .disabled {
@@ -7811,7 +7816,9 @@ body {
   margin-top: 0;
 }
 .caption h4 {
-  min-height: 54px;
+  height: 54px;
+  min-height: initial;
+  overflow: hidden;
   text-align: center;
 }
 .caption h4 a {
@@ -7863,6 +7870,10 @@ body {
   -ms-flex-preferred-size: 280px;
           flex-basis: 280px;
 }
+.food_area .food_block .food .btn-success {
+  height: 46px;
+  padding: 3px 18px;
+}
 .food_area .food_block .food .count_food_text {
   padding-right: 12px;
   font-family: "MuseoSansCyrl-500";
@@ -7882,31 +7893,31 @@ body {
           align-items: center;
 }
 .food_area .food_block .food .input-group input {
-  width: 64px;
+  width: 38px;
   height: 25px;
   text-align: center;
 }
 .food_area .food_block .food .input-group .input-group-addon_f {
-  width: 30px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border-top-left-radius: 14px;
   border-bottom-left-radius: 12px;
 }
 .food_area .food_block .food .input-group .input-group-addon_f:before {
   position: relative;
-  top: -4px;
+  top: -7px;
   right: 1px;
   content: '-';
 }
 .food_area .food_block .food .input-group .input-group-addon_l {
-  width: 30px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 12px;
 }
 .food_area .food_block .food .input-group .input-group-addon_l:after {
   position: relative;
-  top: -5px;
+  top: -8px;
   right: 5px;
   content: '+';
 }
@@ -7941,7 +7952,7 @@ body {
 }
 .our_menu:before {
   position: relative;
-  top: 7px;
+  top: 5px;
   left: -6px;
   content: url("../../../images/restaurant-menu.png");
 }
@@ -7954,7 +7965,7 @@ body {
 }
 .check_order_menu:before {
   position: relative;
-  top: 2px;
+  top: 3px;
   left: -6px;
   content: url("../../../images/hot-food-in-a-bowl copy.png");
 }
@@ -7969,7 +7980,7 @@ body {
   padding-top: 5px;
 }
 #navbar_under .navbar-nav > li > a.image_button img {
-  height: 40px;
+  height: 28px;
 }
 .cart_order_name {
   font-family: "MuseoSansCyrl-700";
@@ -7980,16 +7991,23 @@ body {
 }
 #navbar_under .navbar-nav > li > a.cart_order_info,
 #navbar_under .navbar-nav > li {
-  line-height: 24px;
+  line-height: 20px;
 }
 #navbar_under .navbar-nav > li {
   padding-right: 25px;
+  font-size: 14px;
+}
+#navbar_under .navbar-form.navbar-left a button {
+  margin-top: 2px;
+}
+#navbar_under .navbar-form.navbar-right button {
+  margin-top: 2px;
 }
 .liked:after {
   position: absolute;
-  top: 21px;
+  top: 16px;
   left: 0;
-  left: 21px;
+  left: 16px;
   z-index: 20;
   padding: 1px 7px;
   font-size: 15px;
@@ -8043,13 +8061,14 @@ body {
 #navbarflex .nav .phone:before {
   position: relative;
   top: 1px;
-  left: -5px;
+  left: -8px;
   content: url("../../../images/smartphone (2).png");
 }
 #navbarflex .nav li {
   outline: none;
 }
 #navbarflex .nav li a {
+  font-size: 14px;
   color: white;
   background-color: transparent;
   border: transparent;
@@ -8060,7 +8079,8 @@ body {
   padding-left: 0;
 }
 .wrap_logo {
-  padding-top: 5px;
+  padding-top: 2px;
+  padding-bottom: 4px;
 }
 #navbar .nav {
   padding-top: 13px;
@@ -8186,12 +8206,12 @@ footer .footer_cocyrigth {
 }
 footer .title {
   font-family: "MuseoSansCyrl-700";
-  font-size: 24px;
+  font-size: 16px;
   color: white;
 }
 footer li a {
   font-family: "MuseoSansCyrl-300";
-  font-size: 18px;
+  font-size: 14px;
   color: #dadada;
 }
 footer li a:hover {
@@ -8200,25 +8220,25 @@ footer li a:hover {
 }
 footer .place:before {
   position: relative;
-  top: 1px;
+  top: 5px;
   left: -10px;
   content: url("../../../images/placeholder.png");
 }
 footer .mail:before {
   position: relative;
-  top: 1px;
+  top: 5px;
   left: -10px;
   content: url("../../../images/envelope.png");
 }
 footer .time:before {
   position: relative;
-  top: 1px;
+  top: 5px;
   left: -10px;
   content: url("../../../images/clock (1).png");
 }
 footer .phone:before {
   position: relative;
-  top: 1px;
+  top: 5px;
   left: -10px;
   content: url("../../../images/phone-call (2).png");
 }
@@ -8254,6 +8274,15 @@ footer .footer-copyright .container-fluid {
 .footer5,
 .footer6 {
   padding-left: 3em;
+}
+.footer4 .title,
+.footer5 .title {
+  margin-top: 0;
+}
+.footer1 img {
+  max-width: 200px;
+  margin-top: 17px;
+  margin-bottom: 15px;
 }
 .food_block_order .order_area,
 .food_block_order .wrap_food {
@@ -8347,5 +8376,27 @@ footer .footer-copyright .container-fluid {
 }
 .owl-nav.disabled {
   display: block!important;
+}
+.food_area .food_block .food .input-group {
+  padding-left: 70px;
+}
+.food_area .food_block .food .input-group input {
+  width: 28px;
+  height: 20px;
+  font-size: 12px;
+  text-align: center;
+}
+.food_block_header {
+  height: 7em;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  #menu {
+    padding-top: 57px!important;
+  }
+}
+@media (max-width: 790px) {
+  .breadcrumb {
+    padding-left: 30px;
+  }
 }
 /*# sourceMappingURL=bootstrap.css.map */

@@ -46,6 +46,8 @@ class ProductextController extends ProductController
     {
         $model = null;
         $searchModel = new ProductSearch();
+        $searchModel->category_id=Yii::$app->params['ext_category_id'];
+        Yii::$app->request->queryParams;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $models = $dataProvider->models;
         if(!empty($models)) $model = array_shift($models);
@@ -63,6 +65,8 @@ class ProductextController extends ProductController
     {
         $model = new Productext;
         $priceModel = new Price;
+
+        $model->category_id=Yii::$app->params['ext_category_id'];
 
         $priceTypes = PriceType::find()->orderBy('sort DESC')->all();
 
@@ -140,7 +144,8 @@ class ProductextController extends ProductController
             $productEvent = new ProductEvent(['model' => $model]);
           //  $this->module->trigger($module::EVENT_PRODUCT_UPDATE, $productEvent);
 
-            return $this->redirect(['update', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->id]);
+
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -152,6 +157,7 @@ class ProductextController extends ProductController
                 'searchModel' => $searchModel,
                 'priceModel' => $priceModel,
             ]);
+
         }
     }
 

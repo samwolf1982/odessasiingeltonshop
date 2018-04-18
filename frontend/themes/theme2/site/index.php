@@ -4,6 +4,7 @@ use app\components\CategorysliderWidget;
 use app\components\ChangeCountExt;
 use app\components\ExtendproductWidget;
 use app\components\OrderFormExt;
+use app\components\ShowPriceext;
 use frontend\assets\MainpageAsset;
 use frontend\assets\TempAsset;
 use yii\helpers\Html;
@@ -29,18 +30,20 @@ use yii\widgets\Pjax;
 $this->title = 'Быстрая доставка еды';
 MainpageAsset::register($this);
 
+
 //TempAsset2::register($this);
 ?>
 
 <div class="col-sm-12 main">
     <!--category menu-->
     <ul class="nav nav-pills nav-justified">
-        <li ><a href="/">салаты</a></li>
-        <li><a href="/">первые блюда</a></li>
-        <li><a href="/index2.php">вторые блюда</a></li>
-        <li><a href="#">гарниры</a></li>
-        <li><a href="#">напитки и десерты</a></li>
+    <?php  foreach ($top_menu_to_slider_widget_bottom as $item) {
+         //yii::error($item);  ?>
+        <li ><a class="scroll_to" href="#menu_<?=$item['cat_id']?>"><?=$item['name']?></a></li>
+    <?php     }  ?>
     </ul>
+
+
 
 
 
@@ -70,6 +73,12 @@ MainpageAsset::register($this);
 
 
 
+
+    <!--   новое меню комплексов   s  -->
+
+    <!--   новое меню комплексов    e  -->
+
+    <!--   cтарое меню комплексов   s  -->
     <div class="food_block">
         <?php Pjax::begin(); ?>
         <div class="food_area">
@@ -87,14 +96,16 @@ MainpageAsset::register($this);
                     <a href="<?=Url::to(['site/index', 'id' => $item->id])?>">  <img src="<?=$item->getImage()->getUrl('278x247');?>" alt="food"> </a>
                     <div class="caption">
                         <h4>   <?= Html::a($item->name, [Url::to(['site/index', 'id' => $item->id])], ['class' => '']) ?></h4>
-                        <?=ChangeCountExt::widget(['model' => $item,'parent_id'=>0,'text'=>'количество:']);?>
+                        <?=ChangeCountExt::widget(['model' => $item,'parent_id'=>0,'text'=>'']);?>
                         <div class="short_desc text-center">
                                 <p>
                                     <?=$item->short_text?>
                                 </p>
                         </div>
+
+
                         <div class="price text-center">
-                            <?=ShowPrice::widget(['model' => $item]);?> грн
+                            <?=ShowPriceext::widget(['model' => $item]);?> грн.
                         </div>
                         <div class="order text-center">
                             <?=BuyButton::widget(['model' => $item,'text'=>'Заказать']);?>
@@ -118,69 +129,31 @@ MainpageAsset::register($this);
 
 
         <div class="clearfix"></div>
-        <div class="food_area ">
-            <div class="food_block_header text-center">
-                <div class="nice">Babooshka</div>
-                <h2>Комплексные обеды</h2>
-                <div class="bottom_food_block_header">
-                    <img src="/images/food.png" alt="Комплексные обеды">
-                </div>
-            </div>
 
-            <div class="food_block">
-
-                <?php
-                foreach (range(1,10) as $item) { ?>
-                    <div class="food yellow">
-                        <img src="/images/food1.png" alt="food">
-                        <div class="caption">
-                            <h4><a href="#">Комплексный обед  Лайт 1 (081) </a></h4>
-
-
-                            <div class="input-group">
-                                <span class="count_food_text">количество: </span>
-                                <span class="input-group-addon  input-group-addon_f"></span>
-                                <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)">
-                                <span class="input-group-addon input-group-addon_l"></span>
-                            </div>
-
-
-                            <div class="short_desc text-center">
-                                <p>
-                                    Борщ овощной с грибами, салат "Витаминный”, дополнительный набо
-                                </p>
-
-                            </div>
-
-                            <div class="price text-center">
-                                130 грн
-                            </div>
-                            <div class="order text-center">
-                                <button type="button" class="btn btn-success">Заказать</button>
-                            </div>
-
-                        </div>
-                    </div>
-                <?php }  ?>
-
-            </div>
-            <div class="clearfix"></div>
-
-
-        </div>
 
 
         <div class="clearfix"></div>
 
-        <!--                Салаты-->
-        <?php CategorysliderWidget::widget(['category_id' => 3]) ?>
+
+
+
+        <!--      widget area bottom-->
+        <?php  foreach ($top_menu_to_slider_widget_bottom as $item) {
+            //yii::error($item);    ?>
+            <div class="stisky_ankor" id="menu_<?=$item['cat_id']?>"></div>
+            <?= CategorysliderWidget::widget(['category_id' => $item['cat_id']]) ?>
+            <div class="clearfix"></div>
+        <?php     }  ?>
+
+        <!--      $top_menu_to_slider_widget_bottom           Салаты-->
+
 
         <!-- Первые блюда-->
         <div class="clearfix"></div>
-        <?= CategorysliderWidget::widget(['category_id' => 5]) ?>
+        <?php // CategorysliderWidget::widget(['category_id' => 5]) ?>
 
         <div class="clearfix"></div>
-        <?= CategorysliderWidget::widget(['category_id' => 5]) ?>
+        <?php // CategorysliderWidget::widget(['category_id' => 5]) ?>
 
 
 
@@ -216,7 +189,7 @@ MainpageAsset::register($this);
 
 
     </div>
-
+    <!--   cтарое меню комплексов   e  -->
 
 
 
@@ -232,139 +205,4 @@ MainpageAsset::register($this);
 
 
 <!--в продакшене удалить-->
-<div class="site-index hidden">
-    <?php $form = ActiveForm::begin(['action' => Url::toRoute(['/order/order/create'])]); ?>
-    <div class="jumbotron">
-        <h1>Во дела</h1>
 
-        <p class="lead">Ниже представлены некоторые важные виджеты. Они работают сообща, хоть и являются частью разных модулей.</p>
-    </div>
-
-    <?php if(!$categories) { ?>
-        <p>Заполните категории и товары в <a href="<?=Url::toRoute(['/backend/web/']);?>">админке</a>.</p>
-    <?php } else { ?>
-        <div class="body-content">
-
-            <h2>1. Выберите категорию</h2>
-            <ul class="nav nav-pills">
-                <?php foreach($categories as $cat) { ?>
-                    <li <?php if($cat->id == $category->id) echo 'class="active"';?>><a href="<?=Url::toRoute(['/site/index', 'categoryId' => $cat->id]);?>"><?=$cat->name;?></a></li>
-                <?php } ?>
-            </ul>
-
-            <h2>2. Отфильтруйте товар</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <fieldset>
-                        <legend>dvizh\filter\widgets\FilterPanel</legend>
-                        <div>
-                            <?=FilterPanel::widget(['itemId' => $category->id, 'findModel' => $queryForFilter, 'ajaxLoad' => true, 'resultHtmlSelector' => '#productsList']); ?>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-
-            <h2>3. Положите в корзину товар</h2>
-            <div class="row" id="productsList">
-                <?php // yii::error($products); ?>
-                <?php foreach($products as $product) { ?>
-                    <div class="col-md-6 product-block">
-                        <figure>
-                            <img src="<?=$product->getImage()->getUrl('200x200');?>" alt="<?=$product->name;?>" />
-                        </figure>
-                        <h3><?=$product->name;?></h3>
-
-                        <fieldset>
-                            <legend>dvizh\field\widgets\Show</legend>
-                            <div>
-                                <?=Show::widget(['model' => $product]);?>
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend>dvizh\shop\widgets\ShowPrice</legend>
-                            <div>
-                                <?=ShowPrice::widget(['model' => $product]);?> р.
-                            </div>
-                        </fieldset>
-                        
-                        <fieldset>
-                            <legend>dvizh\cart\widgets\ChangeOptions</legend>
-                            <div>
-                                <?=ChangeOptions::widget(['model' => $product]);?>
-                            </div>
-                        </fieldset>
-                        
-                        <fieldset>
-                            <legend>dvizh\cart\widgets\ChangeCount</legend>
-                            <div>
-                                <?=ChangeCount::widget(['model' => $product]);?>
-                            </div>
-                        </fieldset>
-                        
-                        <fieldset>
-                            <legend>dvizh\cart\widgets\BuyButton</legend>
-                            <div>
-                                <?=BuyButton::widget(['model' => $product]);?>
-                            </div>
-                        </fieldset>
-
-                    </div>
-                <?php } ?>
-            </div>
-
-            <h2>4. Проверьте корзину</h2>
-            <fieldset>
-                <legend>dvizh\cart\widgets\ElementsList</legend>
-                <div>
-                    <?=ElementsList::widget();?>
-                </div>
-            </fieldset>
-
-            <fieldset>
-                <legend>dvizh\cart\widgets\CartInformer</legend>
-                <div>
-                    <?=CartInformer::widget();?>
-                </div>
-            </fieldset>
-            
-            <fieldset>
-                <legend>dvizh\cart\widgets\TruncateButton</legend>
-                <div>
-                    <?=TruncateButton::widget();?>
-                </div>
-            </fieldset>
-
-            <h2>5. Воспользуйтесь маркетингом</h2>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <fieldset>
-                        <legend>dvizh\promocode\widgets\Enter</legend>
-                        <div>
-                            <?=Enter::widget();?>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="col-md-6">
-                    <fieldset>
-                        <legend>dvizh\certificate\widgets\CertificateWidget</legend>
-                        <div>
-                            <?=CertificateWidget::widget();?>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-
-            <h2>6. Совершите заказ</h2>
-            <fieldset>
-                <legend>dvizh\order\widgets\OrderForm</legend>
-                <div>
-                    <?=OrderForm::widget(['view'=>'@app/components/views/order-form/form','form'=>$form]);?>
-                </div>
-            </fieldset>
-
-        </div>
-    <?php } ?>
-    <?php ActiveForm::end();?>
-</div>

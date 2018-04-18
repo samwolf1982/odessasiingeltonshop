@@ -1,3 +1,22 @@
 .left_cart .food_area .food_block .food img {
   height: auto;
 }
+.left_cart .wrp_fields_different label {
+  display: none;
+}
+.left_cart .wrp_fields_different input {
+  width: 200px;
+}
+.left_cart .wrp_fields_different .wrap_time_select .form-group,
+.left_cart .wrp_fields_different .form-group {
+  width: auto;
+  float: right;
+}
+.left_cart .wrp_fields_different .form-group {
+  float: right;
+}
+.left_cart .food_area .food_block .food {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  align-items: center;
+}
