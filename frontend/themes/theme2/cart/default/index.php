@@ -46,6 +46,7 @@ CartfixAsset::register($this);
 
 <?php $form = ActiveForm::begin(['action' => Url::toRoute(['/order/order/create']),'options' => [
     'validateOnSubmit' => true,
+    'onSubmit'=>'on_submit_cart(event);',
     'class' => 'form'
 ],]); ?>
         <div class="col-sm-12">

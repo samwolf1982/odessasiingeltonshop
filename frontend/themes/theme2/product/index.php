@@ -172,6 +172,7 @@ ProductAsset::register($this);
                                                         if (!empty($km) && !empty($c_o)){
                                                             $options_arr[$km]=$c_o;
                                                         }
+                                                        yii::error( $options_arr);
                                                         ?>
                                                         <?=BuyButton::widget(['model' => $product,'text'=>'Заказать','options'=>$options_arr]);?>
                                                     </div>
@@ -273,9 +274,11 @@ ProductAsset::register($this);
 
         <div class="clearfix"></div>
 
+        <?php if(0){ ?>
+
         <?= CategorysliderWidget::widget(['category_id' => $product,'w'=>'278','h'=>"447",'title'=>'Рекомендуемые блюда','is_rel'=>true]);  // 5-ok ?>
 
-
+        <?php } ?>
 
         <!--                Напитки и Десерты-->
         <div class="clearfix"></div>

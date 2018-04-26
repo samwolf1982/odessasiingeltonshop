@@ -14,11 +14,12 @@ use yii\widgets\ActiveForm;
         <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
 
         <div class="row">
-            <div class="col-lg-12"><?= $form->field($orderModel, 'client_name')->textInput(['placeholder' => 'Фамилия Имя Отчество','required'=>true]) ?></div>
+            <div class="col-lg-12"><?= $form->field($orderModel, 'client_name')->textInput(['placeholder' => 'Ваше имя','required'=>true]) ?></div>
             <div class="col-lg-6"><?= $form->field($orderModel, 'phone')->textInput(['placeholder' => 'Ваш номер телефона','required'=>true]) ?></div>
-            <div class="col-lg-6"><?= $form->field($orderModel, 'email')->textInput(['placeholder' => 'Ваш e-mail','required'=>true]) ?></div>
+            <div class="col-lg-6"><?= $form->field($orderModel, 'email')->textInput(['placeholder' => 'Ваш e-mail']) ?></div>
         </div>
 
+    
         <div class="row">
             <?php if($shippingTypes) { ?>
                 <div class="col-md-6 order-widget-shipping-type">

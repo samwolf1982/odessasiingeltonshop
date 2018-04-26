@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use common\models\Productext;
 use common\models\Productsimple;
 use common\models\Testimonials;
+use dvizh\shop\models\modification\ModificationSearch;
 use Yii;
 use yii\web\Controller;
 use dvizh\shop\models\Category;
@@ -72,12 +73,50 @@ class ProductController extends \yii\web\Controller
 
         // установка опционых цен
             // возможны баги с порядком
-            foreach($product->getModifications()->andWhere(['available' => 'yes'])->all() as $modification) {
+      //  yii::trace(get_class($product));
+       // yii::trace($product->modifications);
+
+
+        foreach ($product->modifications as $modification) {
+            /** @var dvizh/shop/models/Modification  $modification **/
+//          yii::error($product->modifications->variants);
+//          yii::error([$modification]);
             $product->price=$modification->price;
-                yii::error(['pp'=>$modification->price]);
-//            $product->price=789;
             //$product->price=$modification->price;
-            }
+          //  break;
+           // yii::trace([$modification->name,$modification->id,$modification->value,]);
+        }
+
+
+
+//// код из админки
+//        [['id', 'product_id', 'sort'], 'integer'],
+//            [['name', 'available'], 'safe'],
+//        $searchModificationModel = new ModificationSearch();
+//        $typeParams['ModificationSearch']['product_id'] = $id;
+//        $modificationDataProvider = $searchModificationModel->search($typeParams);
+
+        //foreach ($modificationDataProvider->getModels() as $mod){
+               // yii::error(['id'=>$mod->id,'sort'=>$mod->sort]);
+       // }
+
+
+
+// код из админки
+
+
+
+//        foreach ($product->getModifications()->where(1)->all() as $modification) {
+//            /** @var dvizh/shop/models/Modification  $modification **/
+//            yii::error([$modification->sort]);
+//            $product->price=$modification->price;
+//        }
+
+
+           // foreach($product->getModifications()->andWhere(['available' => 'yes'])->all() as $modification) {
+          //  $product->price=$modification->price;
+
+//            }
 
        // $product->price=456;
 //yii::error(['pp'=>$product]);
@@ -136,13 +175,13 @@ class ProductController extends \yii\web\Controller
         //-    отзывы для продкута
         $t_ar=[];
         if (isset($_GET['id'])){
-            yii::error($_GET['id']);
+           // yii::error($_GET['id']);
             $res_test=Testimonials::find()->where(['id_product'=>$_GET['id'],'status'=>1])->orderBy(['id'=>SORT_DESC]) ->limit(2) ->all();
             if ($res_test){
                 $t_ar= $res_test;
             }
         }
-yii::error($t_ar);
+//yii::error($t_ar);
 
 
         //----------

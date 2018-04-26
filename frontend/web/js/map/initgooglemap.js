@@ -15,6 +15,71 @@ var componentForm = {
     country: 'long_name',
     postal_code: 'short_name'
 };
+
+// cписок кругов разный цвет брать из базы
+var citymap = {
+    level_1: {
+        center:myLatlng,
+        population: 2000,
+        strokeColor: '#719646',
+        strokeOpacity: 0.3,
+        strokeWeight: 2,
+        fillColor: '#719646',
+        fillOpacity:  0.05,
+    },
+    level_2: {
+        center:myLatlng,
+        population: 5000,
+        strokeColor: '#719646',
+        strokeOpacity: 0.3,
+        strokeWeight: 2,
+        fillColor: '#AED6FF',
+        fillOpacity:  0.05,
+    },
+    level_3: {
+        center:myLatlng,
+        population: 9000,
+        strokeColor: '#719646',
+        strokeOpacity: 0.3,
+        strokeWeight: 2,
+        fillColor: '#F7E898',
+        fillOpacity: 0.05,
+    },
+    level_4: {
+        center:myLatlng,
+        population: 11000,
+        strokeColor: '#719646',
+        strokeOpacity: 0.3,
+        strokeWeight: 2,
+        fillColor: '#AED6FF',
+        fillOpacity: 0.05,
+    },
+    level_5: {
+        center:myLatlng,
+        population: 14000,
+        strokeColor: '#719646',
+        strokeOpacity: 0.3,
+        strokeWeight: 2,
+        fillColor: '#F7E898',
+        fillOpacity: 0.05,
+    },
+
+
+    // newyork: {
+    //     center: {lat: 40.714, lng: -74.005},
+    //     population: 8405837
+    // },
+    // losangeles: {
+    //     center: {lat: 34.052, lng: -118.243},
+    //     population: 3857799
+    // },
+    // vancouver: {
+    //     center: {lat: 49.25, lng: -123.1},
+    //     population: 603502
+    // }
+};
+
+
 //var  id_place_form_list=['objects-country','objects-sity','objects-state','objects-zip','objects-street'];
 var  id_place_form_list=['inputext_7','inputext_8','inputext_5','inputext_6','inputext_7'];
 function initAutocomplete() {
@@ -51,6 +116,7 @@ function fillInAddress() {
         gm_lng = place.geometry.location.lng();
 
     fill_inputs_coordinate(gm_lat,gm_lng);
+
     // clear_el('objects-lat'); clear_el('objects-lng');
     // document.getElementById('objects-lat').value = gm_lat; document.getElementById('objects-lng').value = gm_lng;
 
@@ -121,7 +187,12 @@ function fillInAddress() {
     }
 
 
-
+// обновление корзины
+    console.log('обновление корзины maP **')
+   // codeLatLng(gm_lat,gm_lng);
+    var latlng = new google.maps.LatLng(gm_lat,gm_lng);
+    distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(myLatlng.lat, myLatlng.lng),latlng);
+    dvizh.cart.renderCartmap();
 
 
 }
@@ -172,10 +243,34 @@ function initMap() {
 
     geocoder = new google.maps.Geocoder();
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 11,
         center: myLatlng
     });
 
+    // cписок кругов
+    for (var city in citymap) {
+        // Add the circle for this city to the map.
+        var cityCircle = new google.maps.Circle({
+            strokeColor:  citymap[city].strokeColor,
+            strokeOpacity:  citymap[city].strokeOpacity,
+            strokeWeight:  citymap[city].strokeWeight,
+            fillColor: citymap[city].fillColor,
+            fillOpacity: citymap[city].fillOpacity,
+            map: map,
+            center: citymap[city].center,
+            radius: citymap[city].population
+            //radius: Math.sqrt(citymap[city].population) * 100
+        });
+        cityCircle.addListener('click', function(e) {
+            infowindow.close();
+            // change place on map
+            marker.setPosition(e.latLng);
+            fill_inputs_coordinate(e.latLng.lat(),e.latLng.lng());
+            codeLatLng(e.latLng.lat(),e.latLng.lng());
+
+        });
+
+    }
     // google.maps.event.addListener(map, 'bounds_changed', function() {
     //     alert(map.getBounds());
     // });
@@ -228,9 +323,14 @@ function initMap() {
         map.setZoom(8);
         map.setCenter(marker.getPosition());
     });
+
+
+
+
 }
 
 function fill_inputs_coordinate(lat,lng) {
+
     clear_el('objects-lat'); clear_el('objects-lng');
     document.getElementById('objects-lat').value = lat; document.getElementById('objects-lng').value = lng;
 }
@@ -242,12 +342,15 @@ function initialize() {
     geocoder = new google.maps.Geocoder();
 }
 
+
 function codeLatLng(lat, lng) {
     var latlng = new google.maps.LatLng(lat, lng);
      distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(myLatlng.lat, myLatlng.lng),latlng);
     console.log(distance);
-    dvizh.cart.changeInputValue();
-    dvizh.cart.renderCart();
+    console.log('befor');
+  //  dvizh.cart.changeInputValue();
+    console.log('after');
+    dvizh.cart.renderCartmap();
 
     geocoder.geocode({
         'latLng': latlng
@@ -292,3 +395,43 @@ function codeLatLng(lat, lng) {
 }
 
 //google.maps.event.addDomListener(window, 'load', initialize);
+
+
+//     message
+function showStackBottomRight(type,msg) {
+    if (typeof window.stackBottomRight === 'undefined') {
+        window.stackBottomRight = {
+            'dir1': 'up',
+            'dir2': 'left',
+            'firstpos1': 25,
+            'firstpos2': 25
+        };
+    }
+    var opts = {
+        title: '',
+        text: msg,
+        stack: window.stackBottomRight,
+        icon: false,
+        styling: {},
+        addClass: 'custom_notify',
+    };
+    switch (type) {
+        case 'error':
+            opts.title = 'Oh No';
+            opts.text = 'Watch out for that water tower!';
+            opts.type = 'error';
+            break;
+        case 'info':
+            opts.title = 'Breaking News';
+            opts.text = 'Have you met Ted?';
+            opts.type = 'info';
+            break;
+        case 'success':
+            opts.title = 'Good News Everyone';
+            opts.text = "I've invented a device that bites shiny metal asses.";
+            opts.type = 'success';
+            break;
+    }
+    PNotify.alert(opts);
+}
+

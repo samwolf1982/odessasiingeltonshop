@@ -71,3 +71,9 @@ label[for="inputext_7"] {
 .order-custom-fields .add_day {
   display: none;
 }
+.custom_notify {
+  background: #F1914A;
+  color: white;
+  font-size: 18px;
+  border-radius: 15px;
+}
