@@ -118,15 +118,22 @@ class Categorysimple extends \yii\db\ActiveRecord
         return $return;
     }
 
+
+
     public function getProducts()
     {
+//        return $this->hasMany(Productsimple::className(), ['id' => 'product_id'])
+//             ->viaTable('{{%shop_product_to_category}}', ['category_id' => 'id'])->available();
+
         return $this->hasMany(Productsimple::className(), ['id' => 'product_id'])
-             ->viaTable('{{%shop_product_to_category}}', ['category_id' => 'id'])->available();
+            ->viaTable('{{%shop_product_to_category}}', ['category_id' => 'id'])->orderBy(['sort'=>SORT_DESC]) ->available();
     }
     
     public function getChilds()
     {
         return $this->hasMany(Categorysimple::className(), ['parent_id' => 'id']);
+
+       // return $this->hasMany(Categorysimple::className(), ['parent_id' => 'id'])->orderBy(['sort' => SORT_ASC]);;
     }
 
     public function getParent()

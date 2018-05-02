@@ -10,17 +10,14 @@ MainpageverAsset::register($this);
 ?>
 
 
-
-
-
-
 <div class="col-sm-12 main">
 
 
 
 
 
-    <?= MainpagebannerWidget::widget(['slider_id'=>Yii::$app->params['slider_main_page_id']]);  ?>
+
+    <?php // MainpagebannerWidget::widget(['slider_id'=>2]);  ?>
 
 
     <section class="main-recommend">
@@ -422,14 +419,6 @@ MainpageverAsset::register($this);
     </section>
 </div>
 
-<div class="clearfix"></div>
-
-
-<?php
-$this->registerJs("function initMapp() { var uluru = {lat: 46.418591, lng: 30.663267};var mapOptions = {zoom: 10.75, center: uluru}; var map = new google.maps.Map(document.getElementById('widget_map'), mapOptions);console.log(312312);}", \yii\web\View::POS_BEGIN);
-
-?>
-
 
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9iV-vIowospXLywrgcMv3zJkO987Vpdc&callback=initMapp"> </script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9iV-vIowospXLywrgcMv3zJkO987Vpdc&callback=initMapp">

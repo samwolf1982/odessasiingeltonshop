@@ -7,7 +7,6 @@
 }(document, 'script', 'facebook-jssdk'));
 
 
-
 function initMapp() {
     var uluru = {lat: 46.418591, lng: 30.663267};
     var mapOptions = {

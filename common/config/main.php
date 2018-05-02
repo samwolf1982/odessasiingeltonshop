@@ -177,6 +177,7 @@ return [
                 'dvizh\shop\models\Product' => 'Продукты',
                 'dvizh\shop\models\Category' => 'Категории',
                 'dvizh\shop\models\Producer' => 'Производители',
+                'common\models\slider' => 'Банер на главной(слайдер)',
             ],
             'adminRoles' => ['superadmin'],
         ],

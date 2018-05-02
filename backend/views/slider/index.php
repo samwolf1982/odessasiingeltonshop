@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             } ],
 
             'url:url',
-            'short_text',
+         //   'short_text',
             'sort',
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],

@@ -25,12 +25,16 @@ use vova07\imperavi\Widget;
         <?= $form->field($model, 'sort')->textInput(['type'=>'number']) ?>
     </div>
 
+
+
+
+
     <div class="col-md-12">
         <?= $form->field($model, 'short_text')->
         widget(Widget::className(), [
             'settings' => [
                 'lang' => 'ru',
-                'minHeight' => 100,
+//                'minHeight' => 100,
                 //'imageUpload' => Url::to(['/site/image-upload']),
                 //'imageManagerJson' => Url::to(['/site/images-get']),
                 'plugins' => [
@@ -42,6 +46,8 @@ use vova07\imperavi\Widget;
         ]);
         ?>
     </div>
+
+
 
     <div class="col-md-12">
         <?=\dvizh\gallery\widgets\Gallery::widget(
@@ -59,6 +65,22 @@ use vova07\imperavi\Widget;
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
         </div>
     </div>
+
+    <style>
+        .redactor-editor{
+            min-height: 0!important;
+        }
+        .content-wrapper{
+            min-height: 80em;
+
+        }
+    </style>
+    <div class="col-md-12 ">
+        <?=\dvizh\field\widgets\Choice::widget(['model' => $model]); ?>
+    </div>
+
+
+
 
     <?php ActiveForm::end(); ?>
 

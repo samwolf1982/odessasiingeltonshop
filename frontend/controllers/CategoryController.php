@@ -106,12 +106,7 @@ class CategoryController extends \yii\web\Controller
         }
 
 
-//         foreach ($current_cat->childs as $cat) {
-//             yii::error($cat->products);
-//                 }
-//        foreach ($categories as $category) {
-//            yii::error($category->products);
-//        }
+
 
         if($current_cat) {
             $query = Productsimple::find()->category($current_cat->id)->orderBy('id DESC');

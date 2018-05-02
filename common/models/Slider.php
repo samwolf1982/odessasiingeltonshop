@@ -20,6 +20,9 @@ class Slider extends \yii\db\ActiveRecord
             'images' => [
                 'class' => 'dvizh\gallery\behaviors\AttachImages',
             ],
+            'field' => [
+                'class' => 'dvizh\field\behaviors\AttachFields',
+            ],
         ];
     }
 
@@ -38,7 +41,8 @@ class Slider extends \yii\db\ActiveRecord
     {
         return [
             [['sort'], 'integer'],
-            [['url', 'short_text', 'name'], 'string', 'max' => 255],
+            [['url', 'name'], 'string', 'max' => 255],
+            [['short_text'],  'string'],
         ];
     }
 
